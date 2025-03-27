@@ -9,14 +9,14 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Bucky Maler">
   <meta name="google" content="notranslate">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
-    <img src="logo.png" alt="Global">
+    <img src="assets/img/logo.png" alt="Global">
     <p>Octave Romer</p>
   </a>
   <p class="device-notification--message">Orientez votre appareil en mode portrait ou utilisez un écran plus grand. Vous ne serez pas déçu.</p>
@@ -28,41 +28,57 @@
       <div class="l-wrapper">
         <header class="header">
           <a class="header--logo" href="#0">
-            <img src="logo.png" alt="Global">
+            <img src="assets/img/logo.png" alt="Global">
             <p>Octave Romer</p>
           </a>
-          <button class="header--cta cta">Contactez-moi</button>
+          <button id="translate-button" data-lang="fr">
+            <img src="drapeau-anglais.avif" alt="Traduire en anglais">
+        </button>
+          <button class="header--cta cta" data-fr="Contactez-moi" data-en="Contact Me">Contactez-moi</button>
+
           <div class="header--nav-toggle">
             <span></span>
           </div>
         </header>
         <nav class="l-side-nav">
           <ul class="side-nav">
-            <li class="is-active"><span><Acceuil></span></li>
-            <li><span>À propos de moi</span></li>
-            <li><span>Mes compétences</span></li>
-            <li><span>Mes projets</span></li>
-            <li><span>Bilan</span></li>
-            <li><span>Contact</span></li>
-          </ul>
+            <li class="is-active">
+              <span data-en="Home" data-fr="Accueil">Accueil</span>
+            </li>
+            <li>
+              <span data-en="About me" data-fr="À propos de moi">À propos de moi</span>
+            </li>
+            <li>
+              <span data-en="My skills" data-fr="Mes compétences">Mes compétences</span>
+            </li>
+            <li>
+              <span data-en="My projects" data-fr="Mes projets">Mes projets</span>
+            </li>
+            <li>
+              <span data-en="Assessment" data-fr="Bilan">Bilan</span>
+            </li>
+            <li>
+              <span data-en="Contact" data-fr="Contact">Contact</span>
+            </li>
         </nav>
         <ul class="l-main-content main-content">
           <li class="l-section section section--is-active">
             <div class="intro">
               
               <div class="intro--banner">
-                <img src="introduction-visual.png" alt="Welcome">
+                <img src="assets/img/introduction-visual.png" alt="Welcome">
                 <h1>Octave Romer</h1>
                 
                 
               <div class="intro--options">
-                <a href="#0"><h3>Étudiant à l'IUT de Niort.<br>Actuellent en première année de BUT <br>Science des Données.</h3> 
+                <a href="#0"><h3 data-fr="Étudiant à l'IUT de Niort. | Actuellement en première année | de BUT Science des Données."
+                  data-en="Student at the IUT of Niort. | Currently in the first year of a | Data Science Bachelor's program.">
+                  Étudiant à l'IUT de Niort. <br> Actuellement en première année <br> de BUT Science des Données.</h3>
 
                 </a>
-                <button class="cta">Contactez-moi
-                 
-                  <span class="btn-background"></span>
-                </button>
+
+        
+                
               </div>
                
               
@@ -73,63 +89,89 @@
 
 
           <li class="l-section section">
+            
             <div class="work">
-                <h2>À propos de moi :</h2>
+              <h2><span data-en="About me:" data-fr="À propos de moi :">À propos de moi :</span></h2>
               <p class="sous-titre">
-                  Je me présente, je m'appelle Octave Romer, j'ai actuellement 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort (79000).
-                  <button id="toggle-button">📖 En savoir plus</button>
+                  <span data-en="Let me introduce myself, my name is Octave Romer, I am 19 years old and I am a student in the Data Science Bachelor's program at the IUT of Poitiers-Niort-Châtellerault, Niort campus (79000)."
+                        data-fr="Je me présente, je m'appelle Octave Romer, j'ai actuellement 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort (79000).">
+                      Je me présente, je m'appelle Octave Romer, j'ai actuellement 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort (79000).
+                  </span>
+                  <button id="toggle-button" >
+                      <span data-en="Learn more" data-fr="En savoir plus">En savoir plus</span>
+                  </button>
               </p>
-
-    
-                <div class="work--lockup">
-                    <ul class="slider">
-                        <li class="slider--item slider--item-left">
-                            <a href="#0">
-                                <div class="slider--item-image">
-                                    <img src="work-victory.jpg" alt="Victory">
-                                </div>
-                                <p class="slider--item-title">Animateur Engagé et Créatif</p>
-                                <p class="slider--item-description">Animateur au centre socioculturel de Saint-Florent à Niort, j’encadre les enfants et organise des animations variées pour leur offrir des moments ludiques et enrichissants.</p>
-                            </a>
-                        </li>
-                        <li class="slider--item slider--item-center">
-                            <a href="#0">
-                                <div class="slider--item-image">
-                                    <img src="work-metiew-smith.jpg" alt="Metiew and Smith">
-                                </div>
-                                <p class="slider--item-title">Passionné de Handball</p>
-                                <p class="slider--item-description">Joueur de handball depuis 12 ans au club de Niort, j'évolue en Prénational aux postes de demi-centre et ailier. Sportif passionné, je partage mon temps entre l'entraînement intensif et le plaisir du jeu.</p>
-                            </a>
-                        </li>
-                        <li class="slider--item slider--item-right">
-                            <a href="#0">
-                                <div class="slider--item-image">
-                                    <img src="work-alex-nowak.jpg" alt="Alex Nowak">
-                                </div>
-                                <p class="slider--item-title">Voyageur Curieux et Passionné</p>
-                                <p class="slider--item-description">J’aime énormément voyager, et mon dernier voyage a été à Los Angeles. Une expérience enrichissante qui m’a permis de découvrir une ville pleine de culture et d’opportunités.</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="slider--prev">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                             viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                            <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                                <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
-                                c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
-                                c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="slider--next">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                            <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                                <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+          
+              <div class="work--lockup">
+                  <ul class="slider">
+                      <li class="slider--item slider--item-left">
+                          <a href="#0">
+                              <div class="slider--item-image">
+                                  <img src="assets/img/work-victory.jpg" alt="Victory">
+                              </div>
+                              <p class="slider--item-title">
+                                  <span data-en="Engaged and Creative Animator" data-fr="Animateur Engagé et Créatif">Animateur Engagé et Créatif</span>
+                              </p>
+                              <p class="slider--item-description">
+                                  <span data-en="Animator at the Saint-Florent community center in Niort, I supervise children and organize various activities to provide them with fun and enriching moments."
+                                        data-fr="Animateur au centre socioculturel de Saint-Florent à Niort, j’encadre les enfants et organise des animations variées pour leur offrir des moments ludiques et enrichissants.">
+                                      Animateur au centre socioculturel de Saint-Florent à Niort, j’encadre les enfants et organise des animations variées pour leur offrir des moments ludiques et enrichissants.
+                                  </span>
+                              </p>
+                          </a>
+                      </li>
+                      <li class="slider--item slider--item-center">
+                          <a href="#0">
+                              <div class="slider--item-image">
+                                  <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
+                              </div>
+                              <p class="slider--item-title">
+                                  <span data-en="Handball Enthusiast" data-fr="Passionné de Handball">Passionné de Handball</span>
+                              </p>
+                              <p class="slider--item-description">
+                                  <span data-en="I have been playing handball for 12 years at the Niort club, currently in Prénational as a center back and winger. Passionate, I split my time between training and enjoying the sport."
+                                        data-fr="Joueur de handball depuis 12 ans au club de Niort, j'évolue en Prénational aux postes de demi-centre et ailier. Passionné, je partage mon temps entre l'entraînement et le plaisir.">
+                                      Joueur de handball depuis 12 ans au club de Niort, j'évolue en Prénational aux postes de demi-centre et ailier. Passionné, je partage mon temps entre l'entraînement et le plaisir.
+                                  </span>
+                              </p>
+                          </a>
+                      </li>
+                      <li class="slider--item slider--item-right">
+                          <a href="#0">
+                              <div class="slider--item-image">
+                                  <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
+                              </div>
+                              <p class="slider--item-title">
+                                  <span data-en="Curious and Passionate Traveler" data-fr="Voyageur Curieux et Passionné">Voyageur Curieux et Passionné</span>
+                              </p>
+                              <p class="slider--item-description">
+                                  <span data-en="I love traveling a lot, and my last trip was to Los Angeles. It was a rewarding experience that allowed me to discover a city full of culture and opportunities."
+                                        data-fr="J’aime énormément voyager, et mon dernier voyage a été à Los Angeles. Une expérience enrichissante qui m’a permis de découvrir une ville pleine de culture et d’opportunités.">
+                                      J’aime énormément voyager, et mon dernier voyage a été à Los Angeles. Une expérience enrichissante qui m’a permis de découvrir une ville pleine de culture et d’opportunités.
+                                  </span>
+                              </p>
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="slider--prev">
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                          <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                              <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+                                      c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                                      c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+                          </g>
+                      </svg>
+                  </div>
+                  <div class="slider--next">
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                          <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                              <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+                          </g>
+                      </svg>
+                  </div>
+              </div>
+          </div>
         </li>
           
           
@@ -297,29 +339,56 @@
     </div>
   </div>
   <ul class="outer-nav">
-    <li class="is-active">Acceuil</li>
-    <li>À propos de moi</li>
-    <li>Mes compétences</li>
-    <li>Mes projets</li>
-    <li>Bilan</li>
-    <li>Contact</li>
+    <li class="is-active">
+      <span data-fr="Accueil" data-en="Home">Accueil</span>
+  </li>
+  <li>
+      <span data-fr="À propos de moi" data-en="About me">À propos de moi</span>
+  </li>
+  <li>
+      <span data-fr="Mes compétences" data-en="My skills">Mes compétences</span>
+  </li>
+  <li>
+      <span data-fr="Mes projets" data-en="My projects">Mes projets</span>
+  </li>
+  <li>
+      <span data-fr="Bilan" data-en="Summary">Bilan</span>
+  </li>
+  <li>
+      <span data-fr="Contact" data-en="Contact">Contact</span>
+  </li>
   </ul>
 </div>
 <div id="popup" class="popup-overlay">
   <div class="popup-content">
       <button class="close-button">&times;</button>
-      <h2>À propos de moi</h2>
+      <h2>
+        <span data-fr="À propos de moi" data-en="About Me">À propos de moi</span>
+      </h2>
       <p>
-        corrige et reformule Je suis quelqu'un de positif, de curieux et de rigoureux. en terminal j'etait au lycee a niort javis comme specialitré mùathematique et phisuqe chimie javais aussi loption maths experte 
+        <span data-fr="Je suis quelqu’un de positif, curieux et rigoureux. En terminale, j'étais au lycée à Niort, où j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l’option maths expertes. Après le bac, j’ai décidé d’intégrer un BUT Science des Données à Niort, une formation scientifique qui correspondait à mes intérêts. De plus, j’y ai découvert de nouvelles matières, comme la programmation, que j’apprécie énormément au cours de cette première année.
+
+        C’est en discutant avec mon meilleur ami, déjà dans cette filière, que j’ai découvert la science des données. Il m’a présenté ce domaine fascinant et riche en opportunités, ce qui m’a poussé à m’y intéresser davantage. En approfondissant le sujet, j’ai rapidement compris que c’était la voie que je souhaitais suivre.
+
+        L’année prochaine, j’ai choisi de me spécialiser en visualisation et en conception d’outils décisionnels, une orientation qui correspond parfaitement à mes aspirations. Par la suite, je souhaite intégrer une école d’ingénieur pour approfondir mes compétences et évoluer dans le domaine de la data, un secteur en plein essor qui joue un rôle clé dans le monde actuel et futur." 
+        data-en="I am someone who is positive, curious, and rigorous. In high school, I studied at a school in Niort, where I specialized in mathematics and physics-chemistry, as well as advanced math. After the baccalaureate, I decided to join a Data Science Bachelor's program in Niort, a scientific program that aligned with my interests. Moreover, I discovered new subjects, like programming, which I really enjoy during this first year.
+
+        It was by talking to my best friend, already in this field, that I discovered data science. He introduced me to this fascinating field full of opportunities, which encouraged me to delve deeper into it. By exploring the subject further, I quickly understood that this was the path I wanted to pursue.
+
+        Next year, I have chosen to specialize in visualization and the design of decision-making tools, an orientation that perfectly matches my aspirations. After that, I plan to join an engineering school to deepen my skills and advance in the field of data, a rapidly growing sector that plays a key role in both the present and future world.">Je suis quelqu’un de positif, curieux et rigoureux. En terminale, j'étais au lycée à Niort, où j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l’option maths expertes. Après le bac, j’ai décidé d’intégrer un BUT Science des Données à Niort, une formation scientifique qui correspondait à mes intérêts. De plus, j’y ai découvert de nouvelles matières, comme la programmation, que j’apprécie énormément au cours de cette première année.
+
+        C’est en discutant avec mon meilleur ami, déjà dans cette filière, que j’ai découvert la science des données. Il m’a présenté ce domaine fascinant et riche en opportunités, ce qui m’a poussé à m’y intéresser davantage. En approfondissant le sujet, j’ai rapidement compris que c’était la voie que je souhaitais suivre.
+        
+        L’année prochaine, j’ai choisi de me spécialiser en visualisation et en conception d’outils décisionnels, une orientation qui correspond parfaitement à mes aspirations. Par la suite, je souhaite intégrer une école d’ingénieur pour approfondir mes compétences et évoluer dans le domaine de la data, un secteur en plein essor qui joue un rôle clé dans le monde actuel et futur.</span>
       </p>
-
-
   </div>
 </div>
-<script src="main1.js"></script>
+
+<script src="assets/js/main1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
-<script src="functions-min.js"></script>
+
+<script src="assets/js/functions-min.js"></script>
  <!---======MAIN JS======-->
 
 </body>

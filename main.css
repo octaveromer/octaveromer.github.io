@@ -519,7 +519,7 @@ body {
   width: 23px
 }
 
-.header--cta {
+.header--cta { 
   position: absolute;
   top: 50%;
   left: 50%;
@@ -535,59 +535,72 @@ body {
   border: none;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity .4s ease-in-out,visibility 0s .4s;
-  transition: opacity .4s ease-in-out,visibility 0s .4s
+  -webkit-transition: opacity .4s ease-in-out, visibility 0s .4s;
+  transition: opacity .4s ease-in-out, visibility 0s .4s;
 }
-
-.header--cta:focus {
-  outline: none
-}
-
 .header--cta.is-active {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity .4s ease-in-out .4s;
-  transition: opacity .4s ease-in-out .4s
+  transition: opacity .4s ease-in-out .4s;
 }
 
+/* Enlève le focus par défaut (bordure bleue ou contour) */
+.header--cta:focus {
+  outline: none;
+  box-shadow: none; /* Optionnel si tu veux supprimer l'ombre */
+}
+
+/* Garde le bouton visible avec un fond spécifique quand il est actif */
+.header--cta:active {
+  background-color: #221598; /* Exemple de couleur verte lors du clic */
+}
+
+/* Gère l'état actif du bouton, le rend visible */
+.header--cta.is-active {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity .4s ease-in-out .4s;
+  transition: opacity .4s ease-in-out .4s;
+}
+
+/* Gère le surlignage du bouton après avoir cliqué dessus */
+.header--cta:focus-visible {
+  background-color: #0f33ff; /* Ou n'importe quelle couleur que tu préfères */
+}
+
+/* Cache le bouton sur les petits écrans */
 @media (max-width: 767px) {
   .header--cta {
-      display:none
+      display: none;
   }
 }
 
+
 .side-nav {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   width: 100px;
   height: 70%;
   max-height: 750px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
   justify-content: space-around;
   margin: 0;
   padding: 0;
   list-style-position: inside;
-  z-index: 10
+  z-index: 10;
 }
 
-.side-nav>li {
+.side-nav > li {
   position: relative;
   top: -5px;
   color: #fff;
   font-size: 6px;
-  cursor: pointer
+  cursor: pointer;
+  white-space: nowrap; /* Empêche le texte d'aller à la ligne */
 }
 
-.side-nav>li span {
+.side-nav > li span {
   position: relative;
   top: 3px;
   left: 10px;
@@ -595,16 +608,18 @@ body {
   font-size: 14px;
   font-weight: 300;
   opacity: 0;
-  visibility: hidden
+  visibility: hidden;
+  white-space: nowrap; /* Empêche également le span d'aller à la ligne */
 }
 
-.side-nav>li::before {
+.side-nav > li::before {
   position: absolute;
   top: 3px;
   left: 10px;
   color: #555;
   font-size: 14px;
-  font-weight: 300
+  font-weight: 300;
+  white-space: nowrap; /* Empêche le ::before d'aller à la ligne */
 }
 
 .side-nav li:nth-child(1)::before {
@@ -880,7 +895,7 @@ body {
   margin: 0;
   font-size: 30px;
   text-align: center;
-  top: -50px; /* Remonte le h2 de 50px */
+  top: 5px; /* Remonte le h2 de 50px */
 }
 
 .sous-titre {
@@ -888,7 +903,7 @@ body {
   color: gray;
   text-align: center;
   position: relative;
-  top: -65px; /* Déplace légèrement le sous-titre vers le haut */
+  top: 5px; /* Déplace légèrement le sous-titre vers le haut */
 }
 
 .work--lockup {
@@ -1953,19 +1968,19 @@ img[alt="Welcome"] {
 
 
 #toggle-button {
-  background-color: #007bff;
+  background-color: rgb(88, 88, 88);
   color: white;
   border: none;
   padding: 5px 10px;
   margin-left: 10px;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 10px;
   display: inline-block;
 }
 
 #toggle-button:hover {
-  background-color: #0056b3;
+  background-color: #0f33ff;
 }
 
 /* Style du popup */
@@ -2017,4 +2032,24 @@ img[alt="Welcome"] {
 body.noscroll {
   overflow: hidden;
   height: 100%;
+}
+
+#translate-button {
+  position: absolute;
+  right: 10%; /* Ajuste selon ton besoin */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#translate-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px; /* Ajuste selon ton besoin */
+}
+
+#translate-button img {
+  width: 40px;
+  height: auto;
+  display: block; /* Évite un espace blanc sous l'image */
 }

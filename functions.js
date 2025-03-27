@@ -125,31 +125,26 @@ $( document ).ready(function() {
 
   }
 
-  // update main content area
   function updateContent(curPos, nextPos, lastItem) {
-
     $('.main-content').children().removeClass('section--is-active');
     $('.main-content').children().eq(nextPos).addClass('section--is-active');
     $('.main-content .section').children().removeClass('section--next section--prev');
 
     if (curPos === lastItem && nextPos === 0 || curPos === 0 && nextPos === lastItem) {
-      $('.main-content .section').children().removeClass('section--next section--prev');
-    }
-    else if (curPos < nextPos) {
-      $('.main-content').children().eq(curPos).children().addClass('section--next');
-    }
-    else {
-      $('.main-content').children().eq(curPos).children().addClass('section--prev');
+        $('.main-content .section').children().removeClass('section--next section--prev');
+    } else if (curPos < nextPos) {
+        $('.main-content').children().eq(curPos).children().addClass('section--next');
+    } else {
+        $('.main-content').children().eq(curPos).children().addClass('section--prev');
     }
 
-    if (nextPos !== 0 && nextPos !== lastItem) {
-      $('.header--cta').addClass('is-active');
+    // Modification ici : le bouton est actif sauf sur la dernière page
+    if (nextPos !== lastItem) {
+        $('.header--cta').addClass('is-active');
+    } else {
+        $('.header--cta').removeClass('is-active');
     }
-    else {
-      $('.header--cta').removeClass('is-active');
-    }
-
-  }
+}
 
   function outerNav() {
 
