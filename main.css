@@ -1838,8 +1838,13 @@ img[alt="Welcome"] {
   border-radius: 60%;
   object-fit: cover;
   background-color: #0f33ff;
-  width: 30% ;
+  width: 30%;
   top: 10%;
+}
+
+img[alt="Welcome"]:hover { /* Suppression de l'espace avant :hover */
+  box-shadow: 0 0 40px white; /* Ajoute une ombre blanche */
+  
 }
 
 .intro--options {
@@ -1883,85 +1888,7 @@ img[alt="Welcome"] {
   font-weight: bold;
 }
 
-/* Centrer le bouton */
-.container-2{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Centre horizontalement */
-  justify-content: center;
-  /* Centre verticalement */
-  height: 100vh;
-  /* Prend toute la hauteur de l'écran */
-}
 
-/* Style du bouton */
-#btn-qualification {
-  background-color: #007bff;
-  /* Bleu sympa */
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#btn-qualification:hover {
-  background-color: #0056b3;
-}
-
-#btn-qualification:active {
-  background-color: #004080;
-}
-
-#btn-qualification:focus {
-  outline: none;
-  /* Supprime l'effet bleu au clic */
-}
-
-/* Cacher la section des jauges au départ */
-#qualification-section {
-  display: none;
-  /* Caché par défaut */
-  margin-top: 20px;
-  /* Espace sous le bouton */
-  text-align: center;
-}
-
-/* Style des jauges */
-.jauge {
-  margin: 10px 0;
-}
-
-.jauge label {
-  font-weight: bold;
-}
-
-.jauge input[type="range"] {
-  width: 200px;
-  accent-color: #007bff;
-  /* Couleur de la jauge */
-}
-
-/* Style du texte des valeurs */
-.jauge span {
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* Désactiver l'effet de focus qui ajoute les lignes bleues */
-#btn-qualification:focus, #btn-qualification:active {
-  outline: none;
-  box-shadow: none;
-  /* Supprime l'ombre bleue */
-}
-
-/* Empêcher la sélection de texte (peut causer des effets visuels indésirables) */
-* {
-  user-select: none;
-}
 
 
 
@@ -2052,4 +1979,210 @@ body.noscroll {
   width: 40px;
   height: auto;
   display: block; /* Évite un espace blanc sous l'image */
+}
+
+
+
+/* COMPETENCE */
+.skills-container {
+  width: 30%; /* Réduit la largeur du container des compétences */
+  padding: 10px;
+  
+  color: white;
+  min-height: 100vh;
+  overflow-y: auto;
+  margin-left: 17%; /* Décale le container pour centrer horizontalement */
+  margin-top: 5%;
+}
+
+.skills-item {
+  background: rgba(88, 88, 88, 0.484);
+  padding: 4px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 1.1em;
+}
+
+
+
+.arrow {
+  font-size: 1.2em;
+  transition: transform 0.3s;
+}
+
+.skills-content {
+  display: none;
+  padding: 2px;
+  font-size: 1em;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Réduction de l’espace entre les éléments */
+  margin: -7px 0; /* Moins d’espace entre chaque barre */
+}
+
+.bar {
+  flex: 1;
+  height: 8px;
+  background: #0c0c0c;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #0f33ff;
+  width: 0;
+  transition: width 1.5s ease-in-out;
+}
+
+.percent {
+  min-width: 30px;
+  text-align: right;
+}
+
+/* QUALIFICATIONS */
+.qualifications-container {
+ 
+  padding: 15px;
+  border-radius: 10px;
+  width: 30%;
+  margin-top: 5%; /* Ajoute un margin-top pour le déplacer vers le bas */
+}
+
+.content-container {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start; /* Les éléments sont collés à gauche */
+}
+
+
+.tab {
+  flex: 1;
+  padding: 8px;
+  background-color: #16213e; /* Couleur de fond initiale */
+  color: #fff; /* Couleur du texte */
+  border: none;
+  cursor: pointer;
+}
+
+
+.qualifications-container {
+
+  padding: 15px;
+  border-radius: 10px;
+  width: 30%; /* Réduit la largeur du container des qualifications */
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px;
+  background-color: #999ba969;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: rgb(88, 88, 88);
+  color: #ffffff; /* Change uniquement la couleur du texte en bleu */
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.entry {
+  background-color: rgba(88, 88, 88, 0.47);
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+
+
+
+
+.animated-title {
+  position: relative;
+  display: inline-block;
+  color: rgb(97, 97, 97); /* Couleur du texte d'arrière-plan */
+  font-size: 2em;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.animated-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  color: rgb(0, 0, 0);
+  border-right: 1px solid rgb(255, 255, 255);
+  overflow: hidden;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+  filter: drop-shadow(0 0 5px white);
+  white-space: nowrap;
+  animation: animate 12s linear infinite;
+}
+
+@keyframes animate {
+  0% { width: 0; }    /* Début */
+  25% { width: 100%; } /* Surlignage en 3s */
+  75% { width: 100%; } /* Maintien du surlignage pendant 6s */
+  100% { width: 0; }   /* Désurlignage en 3s */
+}
+
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(7, 7, 77, 0.8));
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1;
+}
+
+/* Animation pour le dégradé dynamique */
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Cercles animés */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* Effet moderne */
 }

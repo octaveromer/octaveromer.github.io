@@ -9,14 +9,14 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Bucky Maler">
   <meta name="google" content="notranslate">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-
+  <div id="background"></div>
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
-    <img src="logo.png" alt="Global">
+    <img src="assets/img/logo.png" alt="Global">
     <p>Octave Romer</p>
   </a>
   <p class="device-notification--message">Orientez votre appareil en mode portrait ou utilisez un écran plus grand. Vous ne serez pas déçu.</p>
@@ -28,7 +28,7 @@
       <div class="l-wrapper">
         <header class="header">
           <a class="header--logo" href="#0">
-            <img src="logo.png" alt="Global">
+            <img src="assets/img/logo.png" alt="Global">
             <p>Octave Romer</p>
           </a>
           <button id="translate-button" data-lang="fr">
@@ -66,8 +66,9 @@
             <div class="intro">
               
               <div class="intro--banner">
-                <img src="introduction-visual.png" alt="Welcome">
-                <h1>Octave Romer</h1>
+                <img src="assets/img/introduction-visual.png" alt="Welcome">
+                <h1 class="animated-title" data-text="Octave Romer">Octave Romer</h1>
+
                 
                 
               <div class="intro--options">
@@ -107,7 +108,7 @@
                       <li class="slider--item slider--item-left">
                           <a href="#0">
                               <div class="slider--item-image">
-                                  <img src="work-victory.jpg" alt="Victory">
+                                  <img src="assets/img/work-victory.jpg" alt="Victory">
                               </div>
                               <p class="slider--item-title">
                                   <span data-en="Engaged and Creative Animator" data-fr="Animateur Engagé et Créatif">Animateur Engagé et Créatif</span>
@@ -123,7 +124,7 @@
                       <li class="slider--item slider--item-center">
                           <a href="#0">
                               <div class="slider--item-image">
-                                  <img src="work-metiew-smith.jpg" alt="Metiew and Smith">
+                                  <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
                               </div>
                               <p class="slider--item-title">
                                   <span data-en="Handball Enthusiast" data-fr="Passionné de Handball">Passionné de Handball</span>
@@ -139,7 +140,7 @@
                       <li class="slider--item slider--item-right">
                           <a href="#0">
                               <div class="slider--item-image">
-                                  <img src="work-alex-nowak.jpg" alt="Alex Nowak">
+                                  <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
                               </div>
                               <p class="slider--item-title">
                                   <span data-en="Curious and Passionate Traveler" data-fr="Voyageur Curieux et Passionné">Voyageur Curieux et Passionné</span>
@@ -178,27 +179,111 @@
           
                         
           <li class="l-section section">
-            <div class="container container-2">
-              <button id="btn-qualification">Qualification</button>
-                <div id="qualification-section" class="qualification-section">
-                  <h2>Qualification</h2>
-                  <div class="jauge">
-                      <label for="jauge1">Compétence 1 :</label>
-                      <input type="range" id="jauge1" min="0" max="100" value="50" disabled>
-                      <span id="valeur1">50</span>%
+            <div class="content-container">
+              <div class="skills-container">
+                <h1>Compétences</h1>
+                <p>Mon niveau technique</p>
+        
+                <div class="skills-item">
+                    <div class="skills-header" onclick="toggleSkills('data')">
+                        <span>📊 Étudiant en Data</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="skills-content" id="data">
+                        <div class="progress">
+                            <p>Sphinx</p>
+                            <div class="bar"><div class="fill" data-width="80"></div></div>
+                            <span class="percent">80%</span>
+                        </div>
+                        <div class="progress">
+                            <p>SAS</p>
+                            <div class="bar"><div class="fill" data-width="70"></div></div>
+                            <span class="percent">70%</span>
+                        </div>
+                        <div class="progress">
+                            <p>SQL</p>
+                            <div class="bar"><div class="fill" data-width="70"></div></div>
+                            <span class="percent">70%</span>
+                        </div>
+                        <div class="progress">
+                            <p>Rstudio</p>
+                            <div class="bar"><div class="fill" data-width="70"></div></div>
+                            <span class="percent">70%</span>
+                        </div>
+                        <div class="progress">
+                            <p>Python</p>
+                            <div class="bar"><div class="fill" data-width="60"></div></div>
+                            <span class="percent">60%</span>
+                        </div>
+                        <div class="progress">
+                            <p>WEB (HTML, CSS, PHP, JavaScript)</p>
+                            <div class="bar"><div class="fill" data-width="60"></div></div>
+                            <span class="percent">60%</span>
+                        </div>
+                    </div>
+                </div>
+        
+
+        
+                <div class="skills-item">
+                  <div class="skills-header" onclick="toggleSkills('langages')">
+                    <span>🌍 Langages</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="skills-content" id="langages">
+                    <div class="progress">
+                        <p>Français</p>
+                        <div class="bar"><div class="fill" data-width="100"></div></div>
+                        <span class="percent">100%</span>
+                    </div>
+                    <div class="progress">
+                        <p>Anglais</p>
+                        <div class="bar"><div class="fill" data-width="50"></div></div>
+                        <span class="percent">50%</span>
+                    </div>
+                </div>
+                </div>
+        
+              </div>
+          
+              <div class="qualifications-container">
+                  <h1>Qualifications</h1>
+                  <div class="tabs">
+                      <button class="tab active" onclick="showTab('education')">Éducation</button>
+                      <button class="tab" onclick="showTab('work')">Travail</button>
                   </div>
-                  <div class="jauge">
-                      <label for="jauge2">Compétence 2 :</label>
-                      <input type="range" id="jauge2" min="0" max="100" value="70" disabled>
-                      <span id="valeur2">70</span>%
+          
+                  <div id="education" class="tab-content active">
+                      <div class="entry">
+                          <h3>Bachelor en Science des Données</h3>
+                          <p>Université de Poitiers - 2024 à 2027</p>
+                      </div>
+                      <div class="entry">
+                          <h3>Baccalauréat Scientifique</h3>
+                          <p>Lycée Jean Macé - 2024</p>
+                      </div>
                   </div>
-                  <div class="jauge">
-                      <label for="jauge3">Compétence 3 :</label>
-                      <input type="range" id="jauge3" min="0" max="100" value="90" disabled>
-                      <span id="valeur3">90</span>%
+          
+                  <div id="work" class="tab-content">
+                      <div class="entry">
+                          <h3>Stagiaire Marine Nationale</h3>
+                          <p>France - Dijon, Septembre 2020 à Juillet 2021</p>
+                      </div>
+                      <div class="entry">
+                          <h3>Croix Rouge Française</h3>
+                          <p>France - Niort, Mars 2023 à Septembre 2023</p>
+                      </div>
+                      <div class="entry">
+                          <h3>Legrand France - Alternance Data Manager</h3>
+                          <p>France - Limoges, Novembre 2023 à Aujourd'hui</p>
+                      </div>
                   </div>
               </div>
             </div>
+          
+            
+            
+      
             
           </li>
 
@@ -219,89 +304,7 @@
 
 
           <li class="l-section section">
-            <div class="hire">
-              <h2>You want us to do</h2>
-              <!-- checkout formspree.io for easy form setup -->
-              <form class="work-request">
-                <div class="work-request--options">
-                  <span class="options-a">
-                    <input id="opt-1" type="checkbox" value="app design">
-                    <label for="opt-1">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      App Design
-                    </label>
-                    <input id="opt-2" type="checkbox" value="graphic design">
-                    <label for="opt-2">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Graphic Design
-                    </label>
-                    <input id="opt-3" type="checkbox" value="motion design">
-                    <label for="opt-3">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Motion Design
-                    </label>
-                  </span>
-                  <span class="options-b">
-                    <input id="opt-4" type="checkbox" value="ux design">
-                    <label for="opt-4">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      UX Design
-                    </label>
-                    <input id="opt-5" type="checkbox" value="webdesign">
-                    <label for="opt-5">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Webdesign
-                    </label>
-                    <input id="opt-6" type="checkbox" value="marketing">
-                    <label for="opt-6">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Marketing
-                    </label>
-                  </span>
-                </div>
-                <div class="work-request--information">
-                  <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
-                    <label for="name">Name</label>
-                  </div>
-                  <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <input type="submit" value="Send Request">
-              </form>
-            </div>
+              
           </li>
 
 
@@ -316,12 +319,12 @@
                 <div class="modal">
                   <div class="modal--information">
                     <p>8 Rue Archimède, 79000 Niort</p>
-                    <a href="mailto:ouremail@gmail.com">romer.octave@gmail.com</a>
+                    <a href="mailto:romer.octave@gmail.com">romer.octave@gmail.com</a>
                     <a href="tel:+148126287560">+33 6 25 79 99 98</a>
                   </div>
                   <ul class="modal--options">
                     <li><a href="CV Octave Romer.pdf" download="CV Octave Romer.pdf">CV</a></li> <!-- Télécharger le fichier PDF avec le nom spécifié -->
-                    <li><a href="mailto:ouremail@gmail.com">Contactez moi</a></li>
+                    <li><a href="mailto:romer.octave@gmail.com">Contactez moi</a></li>
                   </ul>
                 </div>
               </div>
@@ -384,11 +387,11 @@
   </div>
 </div>
 
-<script src="main1.js"></script>
+<script src="assets/js/main1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 
-<script src="functions-min.js"></script>
+<script src="assets/js/functions-min.js"></script>
  <!---======MAIN JS======-->
 
 </body>

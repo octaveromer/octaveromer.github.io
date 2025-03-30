@@ -8,17 +8,6 @@ function downloadCV() {
   }
   
 
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btn-qualification").addEventListener("click", function () {
-        let section = document.getElementById("qualification-section");
-
-        if (section.style.display === "none" || section.style.display === "") {
-            section.style.display = "block";
-        } else {
-            section.style.display = "none";
-        }
-    });
-});
 
 
 
@@ -171,3 +160,105 @@ const toggleButton = document.getElementById("toggle-button");
                 $('.header--cta').removeClass('is-active');
             }
         }
+
+
+
+
+        function toggleSkills(id) {
+            let content = document.getElementById(id);
+            let arrow = content.parentElement.querySelector('.arrow'); // Corrige le ciblage de .arrow
+        
+            // Vérifie si l'élément est visible avec getComputedStyle
+            let isVisible = getComputedStyle(content).display !== "none";
+        
+            if (isVisible) {
+                content.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                content.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+                animateBars(content);
+            }
+        }
+        
+        function animateBars(container) {
+            let bars = container.querySelectorAll('.fill');
+            
+            bars.forEach((bar) => {
+                let width = bar.getAttribute('data-width');
+                bar.style.width = "0";
+        
+                setTimeout(() => {
+                    bar.style.width = width + "%";
+                }, 200);
+            });
+        }
+        
+        
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab');
+        
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+        
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+        
+        
+        
+        const background = document.getElementById('background');
+        const numCircles = 5; // Nombre fixe de cercles
+        const circles = [];
+        
+        // Fonction pour créer les cercles une seule fois
+        function createCircles() {
+            for (let i = 0; i < numCircles; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+        
+                // Taille aléatoire
+                const size = Math.random() * 150 + 50; // Entre 50px et 200px
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+        
+                // Position aléatoire initiale
+                const x = Math.random() * (window.innerWidth - size);
+                const y = Math.random() * (window.innerHeight - size);
+                circle.style.left = `${x}px`;
+                circle.style.top = `${y}px`;
+        
+                // Ajouter le cercle au DOM
+                background.appendChild(circle);
+                circles.push({ element: circle, x, y, size, speedX: Math.random() * 2 - 1, speedY: Math.random() * 2 - 1 });
+            }
+        }
+        
+        // Fonction pour animer les cercles en continu
+        function animateCircles() {
+            circles.forEach(circle => {
+                circle.x += circle.speedX;
+                circle.y += circle.speedY;
+        
+                // Collision avec les bords
+                if (circle.x <= 0 || circle.x + circle.size >= window.innerWidth) {
+                    circle.speedX *= -1;
+                }
+                if (circle.y <= 0 || circle.y + circle.size >= window.innerHeight) {
+                    circle.speedY *= -1;
+                }
+        
+                // Appliquer la nouvelle position
+                circle.element.style.left = `${circle.x}px`;
+                circle.element.style.top = `${circle.y}px`;
+            });
+        
+            requestAnimationFrame(animateCircles);
+        }
+        
+        // Lancer l'animation
+        createCircles();
+        animateCircles();
+        
