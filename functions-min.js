@@ -252,13 +252,13 @@
     function M(t, e, i) {
         i || (i = Ht);
         var n = e[i[0]] - t[i[0]]
-          , s = e[i[1]] - t[i[1]];
+          , s = e[i[1]] - t[i[1]]
         return Math.sqrt(n * n + s * s)
     }
     function z(t, e, i) {
         i || (i = Ht);
         var n = e[i[0]] - t[i[0]]
-          , s = e[i[1]] - t[i[1]];
+          , s = e[i[1]] - t[i[1]]
         return 180 * Math.atan2(s, n) / Math.PI
     }
     function N(t, e) {
@@ -1259,23 +1259,7 @@ $(document).ready(function() {
     }
     var o = !0
       , a = null;
-    $(this).on("mousewheel DOMMouseScroll", function(e) {
-        if (!$(".outer-nav").hasClass("is-vis")) {
-            e.preventDefault();
-            var i = e.originalEvent.wheelDelta ? -e.originalEvent.wheelDelta : 20 * e.originalEvent.detail;
-            i > 50 && o ? (o = !1,
-            clearTimeout(a),
-            a = setTimeout(function() {
-                o = !0
-            }, 800),
-            t(1)) : -50 > i && o && (o = !1,
-            clearTimeout(a),
-            a = setTimeout(function() {
-                o = !0
-            }, 800),
-            t(-1))
-        }
-    }),
+
     $(".side-nav li, .outer-nav li").click(function() {
         if (!$(this).hasClass("is-active")) {
             var t = $(this)
@@ -1311,3 +1295,17 @@ $(document).ready(function() {
     s(),
     r()
 });
+
+
+ const carrouselBtnNext = document.querySelector('.carrousel_btn_next');
+  const carrouselBtnPrev = document.querySelector('.carrousel_btn_prev');
+
+  carrouselBtnNext.addEventListener('click', () => {
+    const slides = document.querySelectorAll('.carrousel_slide_item');
+    document.querySelector('.carrousel_slider_zone').appendChild(slides[0]);
+  });
+
+  carrouselBtnPrev.addEventListener('click', () => {
+    const slides = document.querySelectorAll('.carrousel_slide_item');
+    document.querySelector('.carrousel_slider_zone').prepend(slides[slides.length - 1]);
+  });
