@@ -1003,7 +1003,9 @@ body {
 
 .work--lockup .slider--item-center .slider--item-image {
   width: 300px;
-  height: 300px
+  height: 300px;
+  box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.8); /* Ombre noire */
+  transition: box-shadow 0.3s ease; /* Transition douce */
 }
 
 .work--lockup .slider--next,.work--lockup .slider--prev {
@@ -1981,7 +1983,22 @@ body.noscroll {
   display: block; /* Évite un espace blanc sous l'image */
 }
 
+#theme-toggle-button {
+  position: absolute;
+  right: 15%; /* Ajuste selon ton besoin */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
 
+#theme-toggle-button img {
+  width: 40px;
+  height: auto;
+  display: block;
+}
 
 /* COMPETENCE */
 .skills-container {
@@ -2185,4 +2202,488 @@ body.noscroll {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px); /* Effet moderne */
+}
+.my-projects-container {
+    width: 80%; /* Augmente la largeur à 90% pour s'adapter à l'écran */
+    height: 80vh; /* 80% de la hauteur de la fenêtre */
+    overflow-x: visible; /* Ajoute un défilement vertical si nécessaire */
+    overflow-y: auto; 
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    display: flex;
+    flex-wrap: wrap; /* Permet aux projets de s'adapter à la largeur */
+    justify-content: space-between; /* Ajoute de l'espace entre les projets */
+    align-items: flex-start; /* Aligne les projets en haut */
+    padding: 45px; /* Ajoute un peu d'espace autour */
+    box-sizing: border-box; /* Inclut le padding dans les dimensions */
+}
+
+/* Masque la barre de défilement pour Chrome, Safari et Opera */
+.my-projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+.my-filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.my-filter-btn {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #f7f7f700;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.my-filter-btn:not(.my-active):hover {
+  background-color: #a0a0a0; /* Couleur de fond au survol */
+  transform: scale(1.05); /* Légèrement agrandi */
+}
+
+.my-filter-btn.my-active {
+  background-color: #0f33ff;
+  color: white;
+}
+
+/* Ajuster la disposition pour que le contenu soit moins haut */
+.my-creations-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.my-creations-title {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10px; /* Réduire la marge inférieure */
+}
+
+.my-creations-subtitle {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px; /* Réduire la marge inférieure */
+}
+
+.my-filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Réduire la marge inférieure */
+}
+
+/* Ajuster les cartes de projet */
+.my-project-card {
+  width: 400px; /* Augmenter la largeur */
+  height: 400px; /* Augmenter la hauteur */
+  margin: 15px;
+  background-color: #fff;
+  border-radius: 20px; /* Bords plus arrondis */
+  box-shadow: 0px 0 40px 5px rgba(0, 0, 0, 0.8); /* Ombre noire */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.my-project-card:hover {
+  transform: scale(1.6) translateY(-10px); /* Zoom accru */
+  box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.9);
+}
+
+.my-project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.my-project-card:hover  {
+  transform: scale(1.3); /* Zoom sur l'image au survol */
+}
+
+.my-project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.my-project-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Pas de voile par défaut */
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Place le voile au-dessus de l'image */
+}
+
+.my-project-card:hover::after {
+    background-color: rgba(0, 0, 0, 0.5); /* Voile gris transparent au survol */
+   
+}
+
+.my-project-card .project-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2; /* Place le titre au-dessus du voile */
+}
+
+.my-project-card:hover .project-title {
+    opacity: 1; /* Affiche le titre au survol */
+}
+
+/* Style pour la fenêtre modale */
+.my-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.my-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 80%;
+  color: black;
+  position: relative;
+}
+
+/* Style pour le carousel */
+.my-carousel {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.my-carousel-slide {
+  display: none;
+  text-align: center;
+}
+
+.my-carousel-slide.active {
+  display: block;
+}
+
+.my-carousel-slide img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.my-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.my-carousel-btn.prev {
+  left: 10px;
+}
+
+.my-carousel-btn.next {
+  right: 10px;
+}
+
+.my-close-modal-btn {
+  background-color: #0f33ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
+}
+
+/* Mode clair */
+body.light-mode {
+    background-color: #ffffff; /* Couleur de fond pour le mode clair */
+    color: #000000; /* Couleur du texte pour le mode clair */
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: #0c0c0c; /* Couleur de fond pour le mode sombre */
+    color: #ffffff; /* Couleur du texte pour le mode sombre */
+}
+
+/* Mode clair */
+body.light-mode {
+    background-color: #ffffff; /* Beige */
+    color: #000000; /* Bleu clair */
+}
+
+
+body.light-mode .my-project-card {
+    background-color: #ffffff; /* Bleu clair */
+    color: #000; /* Texte noir */
+}
+
+body.light-mode .my-filter-btn {
+    background-color: #ffffff; /* Bleu clair */
+    color: #000;
+}
+
+body.light-mode .my-filter-btn.my-active {
+    background-color: #1148ff; /* Bleu plus foncé */
+    color: #fff;
+}
+
+/* Conteneur du bouton de bascule */
+.theme-toggle {
+  position: absolute;
+  right: 15%; /* Positionné à gauche du bouton traduction */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Input caché */
+.theme-toggle input {
+  display: none;
+}
+
+/* Label pour le bouton */
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+/* Cercle à l'intérieur du bouton */
+.toggle-circle {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Mode sombre activé */
+input:checked + .toggle-label {
+  background-color: #333;
+}
+
+input:checked + .toggle-label .toggle-circle {
+  transform: translateX(30px);
+}
+
+
+/* ===== MODAL SLIDER GLOBAL ===== */
+.my-slider-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.my-slider-modal.hidden {
+  display: none;
+}
+
+.my-slider-content {
+  position: relative;
+  width: 60%;
+  height: 60%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-slider-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.my-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.my-slider-track {
+  display: none;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+/* Optional: hide scrollbar on overflow */
+.my-slider-wrapper::-webkit-scrollbar {
+  display: flex;
+}
+
+.my-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+/* Slide content layout */
+.my-slide-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.my-slide-img {
+  width: 35%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.my-slide-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.my-slide-img.left {
+  order: 0;
+}
+.my-slide-img.right {
+  order: 1;
+}
+
+.my-slide-text {
+  width: 60%;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.my-slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: #f0f0f0;
+}
+
+.my-slider-controls button {
+  background-color: #333;
+  color: white;
+  padding: 10px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.bilan-title {
+  font-size: 1.8vw;
+  text-align: center;
+  margin: 6vh 0 3vh; /* ↑ Plus d’espace au-dessus du titre */
+  color: #ffffff;
+}
+
+  .pdf-container {
+    width: 90%;
+    height: 70vh; /* hauteur relative à la fenêtre */
+    margin: 5vh auto 3vh;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc;
+  }
+
+  .pdf-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+.btn-download {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+
+.btn-download a {
+  display: inline-block;
+  background-color: #007BFF;
+  color: white;
+  padding: 0.7vh 1.5vw; /* ↓ Réduit la taille du bouton */
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1vw; /* ↓ Texte plus petit */
+  transition: background-color 0.3s ease;
+}
+
+  .btn-download a:hover {
+    background-color: #0056b3;
+  }
+
+  .modal--map {
+  margin: 20px 0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
 }
