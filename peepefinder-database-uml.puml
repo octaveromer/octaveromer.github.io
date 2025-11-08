@@ -1,0 +1,256 @@
+@startuml PeePeeFinder Database
+!define ENTITY_COLOR #E1F5FE
+!define PRIMARY_KEY_COLOR #FFD54F
+!define FOREIGN_KEY_COLOR #81C784
+
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FAFAFA
+skinparam roundcorner 5
+skinparam shadowing false
+
+title Diagramme UML - Base de données PeePeeFinder\nVersion 2.1
+
+' ========================================
+' NIVEAU 1 - Tables indépendantes
+' ========================================
+
+package "Niveau 1 - Tables indépendantes" <<Rectangle>> #EEEEEE {
+
+    entity "users" as users <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        username : VARCHAR(50) <<UNIQUE>>
+        email : VARCHAR(100) <<UNIQUE>>
+        password_hash : VARCHAR(255)
+        role : ENUM('user', 'admin')
+        dark_mode : BOOLEAN
+        created_at : DATETIME
+        last_login : DATETIME
+        is_active : BOOLEAN
+        email_verified : BOOLEAN
+        --
+        Indexes: username, email, role, is_active
+    }
+
+    entity "toilettes" as toilettes <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **Colonnes OpenData**
+        Source : VARCHAR(255)
+        Accessible_au_public : VARCHAR(50)
+        Tarif : VARCHAR(50)
+        Accessibilite_PMR : VARCHAR(50)
+        Indications_localisation : TEXT
+        Type : VARCHAR(100)
+        Horaires_ouverture : TEXT
+        Relais_bebe : VARCHAR(50)
+        coord_geo : VARCHAR(100)
+        osm_id : VARCHAR(100)
+        nom_de_la_commune : VARCHAR(100)
+        --
+        **Colonnes normalisées**
+        nom : VARCHAR(255)
+        type_normalise : VARCHAR(100)
+        adresse : VARCHAR(255)
+        commune : VARCHAR(100)
+        code_postal : VARCHAR(10)
+        payant : BOOLEAN
+        acces_pmr : BOOLEAN
+        ouvert_24_7 : BOOLEAN
+        latitude : DECIMAL(9,6)
+        longitude : DECIMAL(9,6)
+        --
+        **Métadonnées**
+        source_id : VARCHAR(100) <<UNIQUE>>
+        date_maj : DATE
+        note_moyenne : DECIMAL(3,2)
+        nombre_avis : INT
+        horaires : TEXT
+        description : TEXT
+        telephone : VARCHAR(20)
+        created_at : DATETIME
+        updated_at : DATETIME
+        --
+        Indexes: commune, type, coords, pmr, payant, 24_7
+    }
+
+    entity "login_attempts" as login_attempts <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        ip_address : VARCHAR(45)
+        username : VARCHAR(100)
+        attempt_time : DATETIME
+        success : BOOLEAN
+        user_agent : TEXT
+        --
+        Indexes: (ip, time), username
+    }
+
+}
+
+' ========================================
+' NIVEAU 2 - Tables dépendantes simples
+' ========================================
+
+package "Niveau 2 - Tables dépendantes" <<Rectangle>> #E8F5E9 {
+
+    entity "remember_tokens" as tokens <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **FK** user_id : INT <<CASCADE>>
+        token : VARCHAR(64) <<UNIQUE>>
+        expiry : DATETIME
+        created_at : DATETIME
+        last_used : DATETIME
+        ip_address : VARCHAR(45)
+        user_agent : TEXT
+        --
+        Indexes: token, expiry, user_id
+    }
+
+    entity "imports_logs" as imports <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **FK** user_id : INT
+        filename : VARCHAR(255)
+        source_url : TEXT
+        rows_total : INT
+        rows_imported : INT
+        rows_updated : INT
+        rows_failed : INT
+        import_date : DATETIME
+        duration_seconds : INT
+        status : ENUM('success', 'partial', 'failed')
+        error_log : TEXT
+        --
+        Indexes: user_id, date, status
+    }
+
+}
+
+' ========================================
+' NIVEAU 3 - Tables de liaison
+' ========================================
+
+package "Niveau 3 - Tables de liaison" <<Rectangle>> #FFF3E0 {
+
+    entity "avis" as avis <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **FK** user_id : INT <<CASCADE>>
+        **FK** toilette_id : INT <<CASCADE>>
+        note : INT <<1-5>>
+        proprete : INT <<1-5>>
+        commentaire : TEXT
+        created_at : DATETIME
+        updated_at : DATETIME
+        is_moderated : BOOLEAN
+        is_visible : BOOLEAN
+        --
+        **UNIQUE** (user_id, toilette_id)
+        Indexes: user, toilette, note, created
+    }
+
+    entity "favorites" as favorites <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **FK** user_id : INT <<CASCADE>>
+        **FK** toilette_id : INT <<CASCADE>>
+        created_at : DATETIME
+        --
+        **UNIQUE** (user_id, toilette_id)
+        Indexes: user_id, toilette_id
+    }
+
+    entity "reports" as reports <<table>> ENTITY_COLOR {
+        **PK** id : INT <<AUTO_INCREMENT>>
+        --
+        **FK** toilette_id : INT <<CASCADE>>
+        **FK** user_id : INT <<SET NULL>>
+        **FK** resolved_by : INT <<SET NULL>>
+        type : ENUM('ferme', 'sale', ...)
+        description : TEXT
+        status : ENUM('pending', 'reviewed', ...)
+        created_at : DATETIME
+        resolved_at : DATETIME
+        admin_notes : TEXT
+        --
+        Indexes: toilette, status, created
+    }
+
+}
+
+' ========================================
+' RELATIONS
+' ========================================
+
+' Relations users -> niveau 2
+users ||--o{ tokens : "possède\n(CASCADE)"
+users ||--o{ imports : "effectue"
+
+' Relations users -> niveau 3
+users ||--o{ avis : "écrit\n(CASCADE)"
+users ||--o{ favorites : "sauvegarde\n(CASCADE)"
+users ||--o{ reports : "signale\n(SET NULL)"
+users ||--o{ reports : "résout (admin)\n(SET NULL)"
+
+' Relations toilettes -> niveau 3
+toilettes ||--o{ avis : "reçoit\n(CASCADE)"
+toilettes ||--o{ favorites : "est favori\n(CASCADE)"
+toilettes ||--o{ reports : "fait l'objet de\n(CASCADE)"
+
+' ========================================
+' NOTES ET LÉGENDES
+' ========================================
+
+note right of users
+  **Table principale**
+  • Authentification
+  • Rôles: user, admin
+  • Dark mode
+  • Vérification email
+end note
+
+note right of toilettes
+  **Données OpenData**
+  • Import CSV
+  • Géolocalisation
+  • Notes auto (triggers)
+  • 3 triggers MAJ note_moyenne
+end note
+
+note bottom of avis
+  **Triggers automatiques:**
+  • AFTER INSERT
+  • AFTER UPDATE
+  • AFTER DELETE
+  → Recalcul auto de
+     note_moyenne et nombre_avis
+     dans table toilettes
+end note
+
+legend bottom left
+  **Légende**
+  | Symbole | Signification |
+  | **PK** | Primary Key |
+  | **FK** | Foreign Key |
+  | **UNIQUE** | Contrainte d'unicité |
+  | CASCADE | ON DELETE CASCADE |
+  | SET NULL | ON DELETE SET NULL |
+
+  **Vues disponibles:**
+  • stats_globales
+  • toilettes_top_rated
+  • stats_par_commune
+  • user_activity
+
+  **Procédures stockées:**
+  • clean_old_login_attempts()
+  • clean_expired_tokens()
+
+  **Version:** 2.1
+  **Moteur:** InnoDB
+  **Charset:** utf8mb4_unicode_ci
+end legend
+
+@enduml
