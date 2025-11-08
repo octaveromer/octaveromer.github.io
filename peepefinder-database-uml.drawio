@@ -1,0 +1,246 @@
+<mxfile host="app.diagrams.net" modified="2025-11-08T00:00:00.000Z" agent="Claude" version="22.0.0" type="device">
+  <diagram name="PeePeeFinder Database UML" id="peepefinder-db">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Titre -->
+        <mxCell id="title" value="Base de données PeePeeFinder - Architecture UML" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="720" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Légende Niveau 1 -->
+        <mxCell id="legend1" value="NIVEAU 1 - Tables indépendantes (0 FK)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Légende Niveau 2 -->
+        <mxCell id="legend2" value="NIVEAU 2 - Tables dépendantes (1 FK)" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Légende Niveau 3 -->
+        <mxCell id="legend3" value="NIVEAU 3 - Tables de liaison (2+ FK)" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1320" y="80" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             NIVEAU 1 - TABLES INDÉPENDANTES
+             ======================================== -->
+
+        <!-- Table: users -->
+        <mxCell id="users" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;users&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👤 username: VARCHAR(50) UNIQUE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📧 email: VARCHAR(100) UNIQUE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔒 password_hash: VARCHAR(255)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👔 role: ENUM('user', 'admin')&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🌙 dark_mode: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 created_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🕐 last_login: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✅ is_active: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✉️ email_verified: BOOLEAN&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="280" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Table: toilettes -->
+        <mxCell id="toilettes" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;toilettes&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;Données OpenData:&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Source: VARCHAR(255)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Accessible_au_public: VARCHAR(50)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Tarif: VARCHAR(50)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;Accessibilite_PMR: VARCHAR(50)&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;Normalisé:&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📍 nom: VARCHAR(255)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🏷️ type_normalise: VARCHAR(100)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🏠 adresse: VARCHAR(255)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🏙️ commune: VARCHAR(100)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📮 code_postal: VARCHAR(10)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;💰 payant: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;♿ acces_pmr: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🕐 ouvert_24_7: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🌍 latitude: DECIMAL(9,6)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🌍 longitude: DECIMAL(9,6)&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;⭐ note_moyenne: DECIMAL(3,2)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📊 nombre_avis: INT&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="280" height="420" as="geometry"/>
+        </mxCell>
+
+        <!-- Table: login_attempts -->
+        <mxCell id="login_attempts" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;login_attempts&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🌐 ip_address: VARCHAR(45)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👤 username: VARCHAR(100)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🕐 attempt_time: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✅ success: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🖥️ user_agent: TEXT&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;🔒 Sécurité anti-brute-force&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="860" width="280" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             NIVEAU 2 - TABLES DÉPENDANTES
+             ======================================== -->
+
+        <!-- Table: remember_tokens -->
+        <mxCell id="remember_tokens" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;remember_tokens&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 user_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🎫 token: VARCHAR(64) UNIQUE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;⏰ expiry: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 created_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🕐 last_used: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🌐 ip_address: VARCHAR(45)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🖥️ user_agent: TEXT&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;💾 Session persistante&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#82b366;fillColor=#d5e8d4;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="280" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Table: imports_logs -->
+        <mxCell id="imports_logs" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;imports_logs&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 user_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📄 filename: VARCHAR(255)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 source_url: TEXT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📊 rows_total: INT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✅ rows_imported: INT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔄 rows_updated: INT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;❌ rows_failed: INT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 import_date: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;⏱️ duration_seconds: INT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📈 status: ENUM&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📝 error_log: TEXT&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;📦 Historique imports CSV&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#82b366;fillColor=#d5e8d4;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="380" width="280" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             NIVEAU 3 - TABLES DE LIAISON
+             ======================================== -->
+
+        <!-- Table: avis -->
+        <mxCell id="avis" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;avis&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 user_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 toilette_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;⭐ note: INT (1-5)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🧹 proprete: INT (1-5)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;💬 commentaire: TEXT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 created_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔄 updated_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👮 is_moderated: BOOLEAN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👁️ is_visible: BOOLEAN&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;⚡ 3 Triggers auto MAJ notes&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;🔒 UNIQUE (user, toilette)&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#d6b656;fillColor=#fff2cc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="140" width="280" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- Table: favorites -->
+        <mxCell id="favorites" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;favorites&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 user_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 toilette_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 created_at: DATETIME&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;⭐ Toilettes favorites&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;🔒 UNIQUE (user, toilette)&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#d6b656;fillColor=#fff2cc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="440" width="280" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Table: reports -->
+        <mxCell id="reports" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;reports&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔑 id: INT (PK, AI)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 toilette_id: INT (FK)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 user_id: INT (FK, NULL)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 resolved_by: INT (FK, NULL)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🏷️ type: ENUM&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📝 description: TEXT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📊 status: ENUM&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 created_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✅ resolved_at: DATETIME&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📝 admin_notes: TEXT&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;i&gt;🚨 Signalements problèmes&lt;/i&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#d6b656;fillColor=#fff2cc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="640" width="280" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS
+             ======================================== -->
+
+        <!-- users -> remember_tokens -->
+        <mxCell id="rel1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="users" target="remember_tokens">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel1_label" value="possède (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel1">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- users -> imports_logs -->
+        <mxCell id="rel2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="users" target="imports_logs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel2_label" value="effectue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel2">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- users -> avis -->
+        <mxCell id="rel3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;curved=1;" edge="1" parent="1" source="users" target="avis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="206"/>
+              <mxPoint x="620" y="205"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3_label" value="écrit (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel3">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- users -> favorites -->
+        <mxCell id="rel4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;curved=1;" edge="1" parent="1" source="users" target="favorites">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="250"/>
+              <mxPoint x="620" y="520"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4_label" value="sauvegarde (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- users -> reports (user_id) -->
+        <mxCell id="rel5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERzeroToOne;startFill=0;curved=1;dashed=1;" edge="1" parent="1" source="users" target="reports">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="294"/>
+              <mxPoint x="620" y="712"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label" value="signale (SET NULL)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel5">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- users -> reports (resolved_by) -->
+        <mxCell id="rel6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERzeroToOne;startFill=0;curved=1;dashed=1;" edge="1" parent="1" source="users" target="reports">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="338"/>
+              <mxPoint x="660" y="808"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label" value="résout admin (SET NULL)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel6">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="40" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- toilettes -> avis -->
+        <mxCell id="rel7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;curved=1;" edge="1" parent="1" source="toilettes" target="avis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="463"/>
+              <mxPoint x="580" y="335"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label" value="reçoit (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- toilettes -> favorites -->
+        <mxCell id="rel8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;curved=1;" edge="1" parent="1" source="toilettes" target="favorites">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="526"/>
+              <mxPoint x="580" y="560"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8_label" value="est favori (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel8">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- toilettes -> reports -->
+        <mxCell id="rel9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.9;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;curved=1;" edge="1" parent="1" source="toilettes" target="reports">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="610"/>
+              <mxPoint x="580" y="856"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel9_label" value="fait l'objet de (CASCADE)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2" vertex="1" connectable="0" parent="rel9">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="50" y="-8" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================
+             NOTES ET INFORMATIONS
+             ======================================== -->
+
+        <!-- Note triggers -->
+        <mxCell id="note_triggers" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;⚡ TRIGGERS AUTOMATIQUES&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;✅ update_note_moyenne_after_insert&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔄 update_note_moyenne_after_update&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;❌ update_note_moyenne_after_delete&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;→ Recalcul auto note_moyenne&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;→ Recalcul auto nombre_avis&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#b85450;fillColor=#f8cecc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="140" width="260" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Note views -->
+        <mxCell id="note_views" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;📊 VUES STATISTIQUES&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📈 stats_globales&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;⭐ toilettes_top_rated&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🏙️ stats_par_commune&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;👤 user_activity&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="330" width="260" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Note procedures -->
+        <mxCell id="note_procedures" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;⚙️ PROCÉDURES STOCKÉES&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🧹 clean_old_login_attempts()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🗑️ clean_expired_tokens()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;rounded=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="480" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Note version -->
+        <mxCell id="note_version" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ℹ️ INFORMATIONS&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📦 Version: 2.1&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🗄️ Moteur: InnoDB&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔤 Charset: utf8mb4_unicode_ci&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📅 Date: 2025-11-08&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;📊 8 Tables&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;🔗 26 Relations&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#666666;fillColor=#f5f5f5;rounded=1;shadow=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="600" width="260" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Légende CASCADE -->
+        <mxCell id="legend_cascade" value="─────  Relation CASCADE (suppression en cascade)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="770" width="260" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Légende SET NULL -->
+        <mxCell id="legend_setnull" value="- - - - -  Relation SET NULL (préserve historique)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="800" width="260" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

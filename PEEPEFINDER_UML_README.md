@@ -4,13 +4,36 @@
 
 Ce dossier contient la documentation UML de la base de données PeePeeFinder en plusieurs formats:
 
-### 1. **peepefinder-database-uml.md**
+### 1. **peepefinder-database-uml.drawio** ⭐ RECOMMANDÉ
+Diagramme Draw.io éditable avec interface visuelle professionnelle.
+
+**Utilisation:**
+- Éditable avec Draw.io (app.diagrams.net)
+- Export PNG/SVG/PDF haute qualité
+- Interface drag & drop intuitive
+- Compatible VSCode, GitHub, Desktop
+
+**Comment visualiser/éditer:**
+```bash
+# Méthode 1: En ligne (RECOMMANDÉ)
+# Ouvrir https://app.diagrams.net/
+# File > Open from > Device > Sélectionner peepefinder-database-uml.drawio
+
+# Méthode 2: VSCode
+# Installer l'extension "Draw.io Integration"
+# Puis ouvrir directement le fichier .drawio
+
+# Méthode 3: Application Desktop
+# Télécharger depuis https://www.diagrams.net/
+```
+
+### 2. **peepefinder-database-uml.md**
 Diagramme Mermaid intégré dans un fichier Markdown avec documentation complète.
 
 **Utilisation:**
 - Visualisable directement sur GitHub
 - Compatible avec VSCode (extension Markdown Preview Mermaid)
-- Compatible avec GitLab, Notion, etc.
+- Format texte léger
 
 **Comment visualiser:**
 ```bash
@@ -19,7 +42,7 @@ Diagramme Mermaid intégré dans un fichier Markdown avec documentation complèt
 # En ligne: https://mermaid.live/ (copier/coller le code Mermaid)
 ```
 
-### 2. **peepefinder-database-uml.puml**
+### 3. **peepefinder-database-uml.puml**
 Diagramme PlantUML (format source) pour génération d'images haute qualité.
 
 **Utilisation:**
@@ -43,6 +66,12 @@ plantuml peepefinder-database-uml.puml
 ## 🎨 Prévisualisation rapide
 
 ### En ligne (sans installation)
+
+**Pour Draw.io (RECOMMANDÉ):**
+1. Ouvrir https://app.diagrams.net/
+2. File > Open from > Device
+3. Sélectionner le fichier peepefinder-database-uml.drawio
+4. Éditer et exporter selon vos besoins
 
 **Pour Mermaid:**
 1. Ouvrir https://mermaid.live/
@@ -143,7 +172,25 @@ toilettes 1 ──── N  reports
 
 ## 🚀 Utilisation dans un projet
 
-### Génération d'images
+### Export d'images depuis Draw.io
+
+**Depuis l'interface web (app.diagrams.net):**
+1. Ouvrir le fichier .drawio
+2. File > Export as > PNG/SVG/PDF/JPEG
+3. Choisir la qualité et les options
+4. Télécharger l'image
+
+**Export PNG haute qualité:**
+- Résolution: 300 DPI
+- Zoom: 200-400%
+- Background: Transparent ou blanc
+
+**Export SVG (recommandé pour web):**
+- Format vectoriel
+- Scalable sans perte de qualité
+- Petite taille de fichier
+
+### Génération d'images avec PlantUML
 
 **PNG haute résolution:**
 ```bash
@@ -172,18 +219,27 @@ plantuml -DPLANTUML_LIMIT_SIZE=16384 -tpng peepefinder-database-uml.puml
 <img src="peepefinder-database-uml.svg" alt="Database UML" />
 ```
 
+**Intégration Draw.io dans GitHub:**
+GitHub peut afficher les fichiers .drawio directement! Il suffit de cliquer dessus.
+
 ## 📝 Mise à jour des diagrammes
 
 Lors de modifications de la structure:
 
 1. **Modifier le SQL source** en premier
-2. **Mettre à jour le fichier .md** (Mermaid)
-3. **Mettre à jour le fichier .puml** (PlantUML)
-4. **Régénérer les images** si nécessaire
-5. **Incrémenter la version** dans les commentaires
+2. **Mettre à jour le fichier .drawio** (Draw.io) - PRINCIPAL
+3. **Mettre à jour le fichier .md** (Mermaid) - optionnel
+4. **Mettre à jour le fichier .puml** (PlantUML) - optionnel
+5. **Exporter les images** si nécessaire
+6. **Incrémenter la version** dans les commentaires
+
+**Recommandation:** Utilisez Draw.io comme source principale, c'est le plus facile à éditer!
 
 ## 🔗 Ressources
 
+- [Draw.io (Diagrams.net)](https://www.diagrams.net/) - **PRINCIPAL**
+- [Draw.io Desktop](https://github.com/jgraph/drawio-desktop/releases)
+- [Documentation Draw.io](https://www.diagrams.net/doc/)
 - [Documentation Mermaid](https://mermaid.js.org/)
 - [Documentation PlantUML](https://plantuml.com/)
 - [PlantUML Online Editor](https://www.plantuml.com/plantuml/)
