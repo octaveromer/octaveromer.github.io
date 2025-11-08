@@ -1,0 +1,357 @@
+<mxfile host="app.diagrams.net" modified="2025-11-08T00:00:00.000Z" agent="Claude" version="22.0.0" type="device">
+  <diagram name="PeePeeFinder - Cas d'utilisation" id="peepefinder-usecase">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Titre -->
+        <mxCell id="title" value="Diagramme UML des Cas d'Utilisation - PeePeeFinder" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Système (rectangle englobant) -->
+        <mxCell id="system" value="Application PeePeeFinder" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=16;fontStyle=1;fillColor=none;strokeWidth=3;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="800" height="850" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             ACTEURS
+             ======================================== -->
+
+        <!-- Acteur: Visiteur -->
+        <mxCell id="acteur_visiteur" value="Visiteur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="250" width="60" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Acteur: Utilisateur connecté -->
+        <mxCell id="acteur_user" value="Utilisateur&#xa;connecté" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="500" width="60" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Acteur: Administrateur -->
+        <mxCell id="acteur_admin" value="Administrateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="780" width="60" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             CAS D'UTILISATION - VISITEUR
+             ======================================== -->
+
+        <!-- UC1: Rechercher des toilettes -->
+        <mxCell id="uc1" value="Rechercher&#xa;des toilettes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC2: Consulter la carte -->
+        <mxCell id="uc2" value="Consulter&#xa;la carte" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="140" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC3: Voir détails toilette -->
+        <mxCell id="uc3" value="Voir détails&#xa;d'une toilette" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="140" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC4: Consulter les avis -->
+        <mxCell id="uc4" value="Consulter&#xa;les avis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="140" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC5: S'inscrire -->
+        <mxCell id="uc5" value="S'inscrire" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC6: Se connecter -->
+        <mxCell id="uc6" value="Se connecter" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="250" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC7: Filtrer par critères -->
+        <mxCell id="uc7" value="Filtrer par critères&#xa;(PMR, gratuit, 24/7)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="250" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             CAS D'UTILISATION - UTILISATEUR CONNECTÉ
+             ======================================== -->
+
+        <!-- UC8: Ajouter un avis -->
+        <mxCell id="uc8" value="Ajouter&#xa;un avis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="380" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC9: Noter une toilette -->
+        <mxCell id="uc9" value="Noter&#xa;une toilette" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="380" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC10: Gérer favoris -->
+        <mxCell id="uc10" value="Gérer&#xa;ses favoris" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="380" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC11: Signaler problème -->
+        <mxCell id="uc11" value="Signaler&#xa;un problème" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="380" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC12: Modifier profil -->
+        <mxCell id="uc12" value="Modifier&#xa;son profil" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="490" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC13: Activer mode sombre -->
+        <mxCell id="uc13" value="Activer&#xa;mode sombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="490" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC14: Modifier/Supprimer avis -->
+        <mxCell id="uc14" value="Modifier/Supprimer&#xa;son avis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="490" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC15: Voir statistiques perso -->
+        <mxCell id="uc15" value="Voir ses&#xa;statistiques" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="490" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             CAS D'UTILISATION - ADMINISTRATEUR
+             ======================================== -->
+
+        <!-- UC16: Importer données CSV -->
+        <mxCell id="uc16" value="Importer&#xa;données CSV" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="640" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC17: Modérer avis -->
+        <mxCell id="uc17" value="Modérer&#xa;les avis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="640" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC18: Gérer signalements -->
+        <mxCell id="uc18" value="Traiter les&#xa;signalements" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="640" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC19: Gérer utilisateurs -->
+        <mxCell id="uc19" value="Gérer les&#xa;utilisateurs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="640" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC20: Voir stats globales -->
+        <mxCell id="uc20" value="Consulter&#xa;statistiques globales" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="750" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC21: Gérer toilettes -->
+        <mxCell id="uc21" value="Modifier/Supprimer&#xa;toilettes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="750" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC22: Voir logs imports -->
+        <mxCell id="uc22" value="Consulter&#xa;logs d'import" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="750" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- UC23: Gérer maintenance -->
+        <mxCell id="uc23" value="Maintenance&#xa;base de données" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="750" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS VISITEUR
+             ======================================== -->
+
+        <mxCell id="rel_v1" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v2" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v3" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v4" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v5" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v6" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_v7" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_visiteur" target="uc7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS UTILISATEUR CONNECTÉ
+             ======================================== -->
+
+        <mxCell id="rel_u8" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u9" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u10" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u11" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u12" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u13" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u14" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_u15" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_user" target="uc15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS ADMINISTRATEUR
+             ======================================== -->
+
+        <mxCell id="rel_a16" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a17" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a18" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc18">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a19" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc19">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a20" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc20">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a21" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc21">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a22" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc22">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rel_a23" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="acteur_admin" target="uc23">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS D'HÉRITAGE (GÉNÉRALISATION)
+             ======================================== -->
+
+        <!-- Utilisateur hérite de Visiteur -->
+        <mxCell id="inherit1" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="acteur_user" target="acteur_visiteur">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin hérite de Utilisateur -->
+        <mxCell id="inherit2" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="acteur_admin" target="acteur_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             RELATIONS EXTEND / INCLUDE
+             ======================================== -->
+
+        <!-- Ajouter avis INCLUDE Noter toilette -->
+        <mxCell id="include1" style="endArrow=open;endFill=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="uc8" target="uc9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="include1_label" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontStyle=2" vertex="1" connectable="0" parent="include1">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint x="10" y="-9" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rechercher INCLUDE Filtrer -->
+        <mxCell id="include2" style="endArrow=open;endFill=0;html=1;exitX=0.9;exitY=0.8;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.1;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="uc1" target="uc7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="include2_label" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontStyle=2" vertex="1" connectable="0" parent="include2">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint x="15" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================
+             LÉGENDE
+             ======================================== -->
+
+        <mxCell id="legend_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="150" width="200" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_title" value="Légende" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="160" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_visiteur" value="Visiteur (non connecté)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="200" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_user" value="Utilisateur connecté" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="235" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_admin" value="Administrateur" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="270" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_inherit" value="───▷ Héritage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="310" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_assoc" value="────  Association" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="340" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_include" value="- - - ▷ &lt;&lt;include&gt;&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="370" width="170" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_note" value="Note: L'utilisateur connecté&#xa;hérite de toutes les&#xa;fonctionnalités du visiteur.&#xa;L'admin hérite de celles&#xa;de l'utilisateur connecté." style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1150" y="460" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================================
+             INFORMATIONS PROJET
+             ======================================== -->
+
+        <mxCell id="info_box" value="Application Web PeePeeFinder&#xa;&#xa;Version: 2.1&#xa;Date: 2025-11-08&#xa;&#xa;3 acteurs | 23 cas d'utilisation" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="600" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
