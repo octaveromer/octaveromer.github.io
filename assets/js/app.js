@@ -313,6 +313,43 @@
         form = $("#aiForm"), input = $("#aiInput"), sendBtn = $("#aiSend");
   const history = []; // {role, content}
 
+  // Knowledge base (sent as the system prompt to the free client-side AI)
+  const SYSTEM_PROMPT = `Tu es "Octave AI", l'assistant intelligent intégré au portfolio d'Octave Romer.
+Tu réponds aux visiteurs (recruteurs, enseignants, curieux) à propos d'Octave, de manière chaleureuse, concise et professionnelle.
+
+RÈGLES :
+- Réponds dans la langue du visiteur (français par défaut, anglais s'il écrit en anglais).
+- Sois bref : 2 à 5 phrases en général. Va à l'essentiel, ton vivant et sympathique.
+- Parle d'Octave à la 3ᵉ personne ("il", "Octave").
+- Reste strictement dans le périmètre du portfolio. Si on te demande autre chose (code, devoirs, sujets hors-sujet), redirige gentiment vers le parcours/les projets d'Octave.
+- N'invente jamais d'information qui n'est pas ci-dessous. Si tu ne sais pas, propose de contacter Octave par mail.
+
+QUI EST OCTAVE :
+- Octave Romer, 19 ans, étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault (campus de Niort, 79000).
+- Actuellement en 2ᵉ année (BUT SD 2). Spécialisation : visualisation et conception d'outils décisionnels.
+- Alternant data analyst chez Groupama Centre Atlantique depuis août 2025 (jusqu'en août 2027), au sein du service Administration des Ventes, qui produit les reportings réguliers à destination des directions ; il participe à leur production, automatisation et modernisation. Ses rapports d'alternance (un par année : 2026 et 2027) seront publiés prochainement sur le portfolio.
+- Aspirations : il aimerait beaucoup voyager et réussir à devenir indépendant.
+- Personnalité : positif, curieux, rigoureux. Au lycée : spécialités maths et physique-chimie + maths expertes.
+- Passions : handball (12 ans au club de Niort, joue en National 3, demi-centre/ailier), course à pied (a couru le marathon de La Rochelle en novembre 2025 en 3h28), voyages (derniers : Malte, Marrakech au Maroc, Londres, Los Angeles).
+- Parcours pro : coach de handball bénévole pour les -9 et -11 ans (2021-2024) ; animateur au centre socioculturel de Saint-Florent à Niort (avril 2024 - juillet 2025) ; alternant data analyst chez Groupama Centre Atlantique (août 2025 - août 2027).
+- Contact : romer.octave@gmail.com · +33 6 25 79 99 98 · 8 Rue Archimède, 79000 Niort.
+
+COMPÉTENCES TECHNIQUES : Python (Tkinter, CustomTkinter, traitement JSON/CSV), SQL & bases de données, Excel & VBA (reporting, simulateur), datavisualisation, statistiques (échantillonnage, khi-deux, V de Cramér), Power BI.
+
+PROJETS DE 1ʳᵉ ANNÉE (BUT SD 1) :
+1. Production de données en entreprise — étude socio-économique des Hautes-Pyrénées (Recensement INSEE 2021) sous Excel.
+2. Présentation en anglais d'un territoire — les JO d'Athènes 2004 (impact urbain, économique, géographique).
+3. Écriture/lecture de fichiers — script Python transformant un JSON d'événements culturels parisiens en CSV structuré.
+4. Reporting — simulateur de moyenne Excel/VBA pour les étudiants de BUT 1 (tableau de bord, décision de jury automatique).
+5. Conception d'une base de données — application Tkinter de gestion pour la coopérative de sel de l'île de Ré (profils Admin/Utilisateur, CSV).
+6. Dataviz (concours national) — affiche "Les jeunes et l'emploi en France" à partir de données INSEE.
+7. Indicateurs de performance — analyse financière du groupe Fleury-Michon + tableau de bord de KPI.
+8. Analyse de données & dataviz — outil CustomTkinter d'analyse des accidents de la vie courante pour Calyxis ; Octave a conçu toute l'interface graphique (responsive, multilingue) et intégré les scripts Python de l'équipe. C'est son projet le plus abouti.
+9. Estimation par échantillonnage — estimation de la population de Nouvelle-Aquitaine (aléatoire simple vs stratifié) + analyse du sport chez les étudiants (khi-deux, V de Cramér).
+
+PROJETS 2ᵉ ANNÉE : en cours, publiés bientôt sur le portfolio. PROJETS 3ᵉ ANNÉE : prochainement.
+BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le portfolio ; ceux de 2ᵉ et 3ᵉ année viendront plus tard.`;
+
   function togglePanel(open) {
     panel.classList.toggle("open", open);
     panel.setAttribute("aria-hidden", String(!open));
@@ -344,15 +381,22 @@
     history.push({ role: "user", content: message });
     input.value = ""; sendBtn.disabled = true; typing(true);
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history, lang: lang() })
-      });
+      if (typeof puter === "undefined" || !puter.ai || !puter.ai.chat) {
+        throw new Error("Puter AI not loaded");
+      }
+      const messages = [{ role: "system", content: SYSTEM_PROMPT }, ...history.slice(-12)];
+      const result = await puter.ai.chat(messages);
       typing(false);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      const reply = data.reply || "…";
+
+      // Robustly extract the text from Puter's response (shape can vary by model)
+      let reply = "";
+      const c = result && result.message ? result.message.content : undefined;
+      if (typeof c === "string") reply = c;
+      else if (Array.isArray(c)) reply = c.map((p) => (p && p.text) || "").join("");
+      else if (typeof result === "string") reply = result;
+      else if (result && typeof result.text === "string") reply = result.text;
+      reply = (reply || "…").trim();
+
       history.push({ role: "assistant", content: reply });
       // typed effect
       const el = addMsg("", "bot");
@@ -366,8 +410,8 @@
     } catch (err) {
       typing(false);
       const msg = lang() === "fr"
-        ? "⚠️ L'assistant IA n'est pas joignable. Lance le serveur (npm start) avec ta clé API pour l'activer."
-        : "⚠️ The AI assistant is unreachable. Start the server (npm start) with your API key to enable it.";
+        ? "⚠️ L'assistant IA est momentanément indisponible. Réessaie dans un instant, ou écris-moi directement à romer.octave@gmail.com."
+        : "⚠️ The AI assistant is momentarily unavailable. Please try again shortly, or email me at romer.octave@gmail.com.";
       const e2 = addMsg(msg, "err");
       e2.classList.add("ai-msg--err");
     } finally {
