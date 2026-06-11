@@ -378,7 +378,10 @@ BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le port
     } else if (!on && el) el.remove();
   }
 
+  let busy = false;
   async function ask(message) {
+    if (busy) return;          // évite les envois simultanés (rate-limit)
+    busy = true;
     addMsg(message, "user");
     history.push({ role: "user", content: message });
     input.value = ""; sendBtn.disabled = true; typing(true);
@@ -391,54 +394,67 @@ BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le port
         role: m.role === "assistant" ? "model" : "user",
         parts: [{ text: m.content }],
       }));
-      let reply = "", lastErr = "";
-      for (const model of GEMINI_MODELS) {
-        try {
+
+      let lastStatus = 0;
+      const callOnce = async () => {
+        for (const model of GEMINI_MODELS) {
           const genCfg = { maxOutputTokens: 600, temperature: 0.6 };
           if (model.indexOf("2.5") !== -1) genCfg.thinkingConfig = { thinkingBudget: 0 }; // pas de "réflexion" = rapide
-          const reqBody = {
-            system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-            contents,
-            generationConfig: genCfg,
-          };
-          const res = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent",
-            { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": KEY }, body: JSON.stringify(reqBody) }
-          );
-          if (!res.ok) { lastErr = "HTTP " + res.status; continue; }
-          const data = await res.json();
-          const parts = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts;
-          reply = Array.isArray(parts) ? parts.map((p) => p.text || "").join("") : "";
-          if (reply) break;
-        } catch (e) { lastErr = String(e && e.message || e); }
-      }
+          try {
+            const res = await fetch(
+              "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent",
+              { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": KEY },
+                body: JSON.stringify({ system_instruction: { parts: [{ text: SYSTEM_PROMPT }] }, contents, generationConfig: genCfg }) }
+            );
+            if (!res.ok) { lastStatus = res.status; continue; }
+            const data = await res.json();
+            const parts = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts;
+            const txt = Array.isArray(parts) ? parts.map((p) => p.text || "").join("") : "";
+            if (txt) return txt;
+          } catch (_) { lastStatus = lastStatus || -1; }
+        }
+        return "";
+      };
+
+      let reply = await callOnce();
+      // 1 réessai auto après une courte pause (gère les rate-limits passagers)
+      if (!reply) { await new Promise((r) => setTimeout(r, 1600)); reply = await callOnce(); }
       typing(false);
-      if (!reply) throw new Error(lastErr || "empty");
+      if (!reply) { const e = new Error("FAIL"); e.status = lastStatus; throw e; }
       reply = reply.trim();
 
       history.push({ role: "assistant", content: reply });
-      // typed effect
+      // typed effect (rapide)
       const el = addMsg("", "bot");
       let i = 0;
-      const speed = reply.length > 400 ? 6 : 14;
+      const step = reply.length > 250 ? 4 : 2;
       (function type() {
+        i += step;
         el.textContent = reply.slice(0, i);
         body.scrollTop = body.scrollHeight;
-        if (i++ < reply.length) setTimeout(type, 1000 / speed);
+        if (i < reply.length) setTimeout(type, 16);
       })();
     } catch (err) {
       typing(false);
-      const noKey = String(err && err.message) === "NO_KEY";
-      const msg = noKey
-        ? (lang() === "fr"
-            ? "🔧 L'assistant n'est pas encore activé : ajoute ta clé Gemini gratuite dans assets/js/config.js (voir README)."
-            : "🔧 Assistant not enabled yet: add your free Gemini key in assets/js/config.js (see README).")
-        : (lang() === "fr"
-            ? "⚠️ L'assistant IA est momentanément indisponible. Réessaie dans un instant, ou écris-moi à romer.octave@gmail.com."
-            : "⚠️ The AI assistant is momentarily unavailable. Try again shortly, or email me at romer.octave@gmail.com.");
+      const code = err && err.message;
+      let msg;
+      if (code === "NO_KEY") {
+        msg = lang() === "fr"
+          ? "🔧 L'assistant n'est pas encore activé : ajoute ta clé Gemini dans assets/js/config.js (voir README)."
+          : "🔧 Assistant not enabled yet: add your free Gemini key in assets/js/config.js (see README).";
+      } else if (err && err.status === 429) {
+        msg = lang() === "fr"
+          ? "⏳ Trop de messages d'un coup ! Patiente ~30 secondes puis réessaie (quota gratuit Gemini)."
+          : "⏳ Too many messages at once! Wait ~30 seconds and try again (free Gemini quota).";
+      } else {
+        msg = lang() === "fr"
+          ? "⚠️ L'assistant IA est momentanément indisponible. Réessaie dans un instant, ou écris-moi à romer.octave@gmail.com."
+          : "⚠️ The AI assistant is momentarily unavailable. Try again shortly, or email me at romer.octave@gmail.com.";
+      }
       addMsg(msg, "err");
     } finally {
       sendBtn.disabled = false;
+      busy = false;
     }
   }
 
