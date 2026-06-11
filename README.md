@@ -1,7 +1,8 @@
 # Portfolio — Octave Romer
 
-Portfolio personnel (BUT Science des Données) avec un **agent IA gratuit** intégré.
-Site **100 % statique** : aucune installation, aucune clé API, aucun serveur.
+Portfolio personnel (BUT Science des Données) avec un **agent IA** intégré.
+Site **100 % statique** (aucun serveur, aucune installation). L'agent IA utilise **Gemini Flash**
+(API gratuite de Google) — il suffit d'y coller une clé gratuite une seule fois (voir plus bas).
 
 🔗 **En ligne :** https://octaveromer.github.io
 
@@ -34,15 +35,30 @@ portfolio/
 
 Ouvre simplement `index.html` dans ton navigateur. Tout fonctionne, **y compris le chatbot IA**.
 
-## L'agent IA (gratuit, sans clé)
+## L'agent IA (Gemini Flash — gratuit)
 
-Le chatbot ✦ utilise **[Puter.js](https://docs.puter.com/)** : une IA qui tourne directement dans
-le navigateur, **gratuitement et sans aucune clé API**. Rien à configurer.
-> Au premier message, le visiteur peut être invité à créer un compte Puter gratuit (c'est le modèle
-> « l'utilisateur paie » qui rend le service gratuit pour toi).
+Le chatbot ✦ utilise **Gemini Flash** de Google, dont l'API a un **quota gratuit** largement
+suffisant. Il faut une **clé gratuite** (créée en 1 min), à coller une seule fois.
+
+### Activer le chatbot (à faire une fois)
+
+1. Va sur **https://aistudio.google.com/apikey** → connecte-toi avec un compte Google → **« Create API key »**.
+2. **Restreins la clé à ton site** (important, car la clé sera visible dans le code) :
+   - Ouvre la clé dans **Google Cloud Console → Identifiants → ta clé API**.
+   - *Restrictions d'application* → **Sites web (HTTP referrers)** → ajoute :
+     `octaveromer.github.io/*` et `https://octaveromer.github.io/*` (et `localhost:*` si tu testes en local).
+   - *Restrictions d'API* → limite à **Generative Language API**.
+   - Ainsi, même visible, la clé ne fonctionne que depuis **ton** site.
+3. Colle la clé entre les guillemets dans **`assets/js/config.js`** :
+   ```js
+   window.GEMINI_API_KEY = "TA_CLE_ICI";
+   ```
+4. `git add -A && git commit -m "Active l'agent IA" && git push`.
+
+> Sans clé, le chatbot affiche un message « pas encore activé ». Avec la clé, il répond tout seul.
 
 Les connaissances de l'IA (ton parcours, tes projets) sont dans la variable `SYSTEM_PROMPT`
-en haut de la section AI AGENT de `assets/js/app.js`.
+en haut de la section AI AGENT de `assets/js/app.js`. Le modèle se change via `GEMINI_MODELS` (même fichier).
 
 ## Mettre à jour le contenu
 

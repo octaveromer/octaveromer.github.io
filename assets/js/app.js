@@ -312,6 +312,8 @@
   const fab = $("#aiFab"), panel = $("#aiPanel"), body = $("#aiBody"),
         form = $("#aiForm"), input = $("#aiInput"), sendBtn = $("#aiSend");
   const history = []; // {role, content}
+  // Modèles Gemini essayés dans l'ordre (repli auto si l'un est indisponible)
+  const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"];
 
   // Knowledge base (sent as the system prompt to the free client-side AI)
   const SYSTEM_PROMPT = `Tu es "Octave AI", l'assistant intelligent intégré au portfolio d'Octave Romer.
@@ -381,21 +383,37 @@ BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le port
     history.push({ role: "user", content: message });
     input.value = ""; sendBtn.disabled = true; typing(true);
     try {
-      if (typeof puter === "undefined" || !puter.ai || !puter.ai.chat) {
-        throw new Error("Puter AI not loaded");
-      }
-      const messages = [{ role: "system", content: SYSTEM_PROMPT }, ...history.slice(-12)];
-      const result = await puter.ai.chat(messages);
-      typing(false);
+      const KEY = (window.GEMINI_API_KEY || "").trim();
+      if (!KEY) throw new Error("NO_KEY");
 
-      // Robustly extract the text from Puter's response (shape can vary by model)
-      let reply = "";
-      const c = result && result.message ? result.message.content : undefined;
-      if (typeof c === "string") reply = c;
-      else if (Array.isArray(c)) reply = c.map((p) => (p && p.text) || "").join("");
-      else if (typeof result === "string") reply = result;
-      else if (result && typeof result.text === "string") reply = result.text;
-      reply = (reply || "…").trim();
+      // Map history to Gemini format (assistant -> model)
+      const contents = history.slice(-12).map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }],
+      }));
+      const reqBody = {
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: { maxOutputTokens: 600, temperature: 0.6 },
+      };
+
+      let reply = "", lastErr = "";
+      for (const model of GEMINI_MODELS) {
+        try {
+          const res = await fetch(
+            "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent",
+            { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": KEY }, body: JSON.stringify(reqBody) }
+          );
+          if (!res.ok) { lastErr = "HTTP " + res.status; continue; }
+          const data = await res.json();
+          const parts = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts;
+          reply = Array.isArray(parts) ? parts.map((p) => p.text || "").join("") : "";
+          if (reply) break;
+        } catch (e) { lastErr = String(e && e.message || e); }
+      }
+      typing(false);
+      if (!reply) throw new Error(lastErr || "empty");
+      reply = reply.trim();
 
       history.push({ role: "assistant", content: reply });
       // typed effect
@@ -409,11 +427,15 @@ BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le port
       })();
     } catch (err) {
       typing(false);
-      const msg = lang() === "fr"
-        ? "⚠️ L'assistant IA est momentanément indisponible. Réessaie dans un instant, ou écris-moi directement à romer.octave@gmail.com."
-        : "⚠️ The AI assistant is momentarily unavailable. Please try again shortly, or email me at romer.octave@gmail.com.";
-      const e2 = addMsg(msg, "err");
-      e2.classList.add("ai-msg--err");
+      const noKey = String(err && err.message) === "NO_KEY";
+      const msg = noKey
+        ? (lang() === "fr"
+            ? "🔧 L'assistant n'est pas encore activé : ajoute ta clé Gemini gratuite dans assets/js/config.js (voir README)."
+            : "🔧 Assistant not enabled yet: add your free Gemini key in assets/js/config.js (see README).")
+        : (lang() === "fr"
+            ? "⚠️ L'assistant IA est momentanément indisponible. Réessaie dans un instant, ou écris-moi à romer.octave@gmail.com."
+            : "⚠️ The AI assistant is momentarily unavailable. Try again shortly, or email me at romer.octave@gmail.com.");
+      addMsg(msg, "err");
     } finally {
       sendBtn.disabled = false;
     }
