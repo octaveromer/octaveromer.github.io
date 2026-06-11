@@ -391,15 +391,16 @@ BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le port
         role: m.role === "assistant" ? "model" : "user",
         parts: [{ text: m.content }],
       }));
-      const reqBody = {
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents,
-        generationConfig: { maxOutputTokens: 600, temperature: 0.6 },
-      };
-
       let reply = "", lastErr = "";
       for (const model of GEMINI_MODELS) {
         try {
+          const genCfg = { maxOutputTokens: 600, temperature: 0.6 };
+          if (model.indexOf("2.5") !== -1) genCfg.thinkingConfig = { thinkingBudget: 0 }; // pas de "réflexion" = rapide
+          const reqBody = {
+            system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            contents,
+            generationConfig: genCfg,
+          };
           const res = await fetch(
             "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent",
             { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": KEY }, body: JSON.stringify(reqBody) }
