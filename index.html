@@ -206,10 +206,10 @@
         </p>
 
         <div class="alternance__reports">
-          <div class="report-card">
+          <a class="report-card report-card--ready" href="assets/files/docs/Rapport_alternance_2025-2026.pdf" download>
             <span class="report-card__year">Rapport 2026</span>
-            <span class="coming__badge"><span data-fr="Prochainement" data-en="Coming soon">Prochainement</span></span>
-          </div>
+            <span class="coming__badge"><span data-fr="Télécharger ↓" data-en="Download ↓">Télécharger ↓</span></span>
+          </a>
           <div class="report-card">
             <span class="report-card__year">Rapport 2027</span>
             <span class="coming__badge"><span data-fr="Prochainement" data-en="Coming soon">Prochainement</span></span>
@@ -246,11 +246,12 @@
 
     <!-- Year 2 -->
     <div class="year-panel" data-year="2">
-      <div class="coming">
-        <div class="coming__badge"><span data-fr="En cours" data-en="In progress">En cours</span></div>
-        <h3 data-fr="Projets de 2ᵉ année" data-en="Second-year projects">Projets de 2ᵉ année</h3>
-        <p data-fr="Je suis actuellement en BUT SD 2 — les projets arrivent très bientôt. Reviens vite !" data-en="I'm currently in my second year — projects are coming very soon. Check back!">Je suis actuellement en BUT SD 2 — les projets arrivent très bientôt. Reviens vite !</p>
+      <div class="filter-row">
+        <button class="chip is-active" data-filter="all"><span data-fr="Tout" data-en="All">Tout</span></button>
+        <button class="chip" data-filter="s3"><span data-fr="Semestre 3" data-en="Semester 3">Semestre 3</span></button>
+        <button class="chip" data-filter="s4"><span data-fr="Semestre 4" data-en="Semester 4">Semestre 4</span></button>
       </div>
+      <div class="project-grid" id="projectGridSD2"><!-- injected by app.js --></div>
     </div>
 
     <!-- Year 3 -->
@@ -289,10 +290,13 @@
     </div>
 
     <div class="bilan-panel" data-byear="2">
-      <div class="coming">
-        <div class="coming__badge"><span data-fr="En cours" data-en="In progress">En cours</span></div>
-        <h3 data-fr="Bilan de 2ᵉ année" data-en="Second-year assessment">Bilan de 2ᵉ année</h3>
-        <p data-fr="Mon bilan de BUT SD 2 sera publié à la fin de l'année." data-en="My second-year assessment will be published at the end of the year.">Mon bilan de BUT SD 2 sera publié à la fin de l'année.</p>
+      <div class="bilan-card">
+        <div class="pdf-frame">
+          <iframe src="assets/files/docs/Bilan_Octave_Romer_BUT2.pdf#toolbar=0" title="Bilan BUT SD2" loading="lazy"></iframe>
+        </div>
+        <a href="assets/files/docs/Bilan_Octave_Romer_BUT2.pdf" download="Bilan_Octave_Romer_BUT2.pdf" class="btn btn--solid magnetic">
+          <span data-fr="Télécharger le bilan" data-en="Download the assessment">Télécharger le bilan</span> <i class="arrow">↓</i>
+        </a>
       </div>
     </div>
 

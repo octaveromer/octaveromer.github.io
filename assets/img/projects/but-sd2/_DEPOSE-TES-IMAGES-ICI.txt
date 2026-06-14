@@ -1,4 +1,0 @@
-Dépose ici les IMAGES (.jpg / .png) de tes projets de BUT SD 2.
-
-Conseil : une image de couverture + 1 à 4 images par projet.
-Ensuite, on les branchera dans le site (tableau PROJECTS de assets/js/app.js).

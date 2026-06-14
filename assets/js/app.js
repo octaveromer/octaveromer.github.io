@@ -203,25 +203,85 @@
     });
   }
 
-  /* ---------- BUILD PROJECT GRID ---------- */
-  const IMG1 = "assets/img/projects/but-sd1/"; // base path for year-1 project images
-  const grid = $("#projectGrid");
-  grid.innerHTML = PROJECTS.map((p) => `
-    <article class="project-card" data-sem="${p.sem}" data-id="${p.id}">
-      <img src="${IMG1}${p.cover}" alt="" loading="lazy">
-      <span class="project-card__plus">+</span>
-      <div class="project-card__overlay">
-        <span class="project-card__sem">${p.sem === "s1" ? "Semestre 1" : "Semestre 2"}</span>
-        <span class="project-card__title">${t(p.title)}</span>
-      </div>
-    </article>`).join("");
+  /* ---------- PROJETS BUT SD 2 (semestres 3 & 4) ---------- */
+  const IMG1 = "assets/img/projects/but-sd1/";
+  const IMG2 = "assets/img/projects/but-sd2/";
+  const FILE2 = "assets/files/projects/but-sd2/";
+
+  const PROJECTS_SD2 = [
+    {
+      id: 21, sem: "s3", dir: IMG2, cover: "webscraping.png", file: FILE2 + "api-meteo-synop.zip",
+      title: { fr: "Outil décisionnel : Web Scraping & API Météo", en: "Decision tool: Web Scraping & Weather API" },
+      tag: { fr: "Python · Web Scraping · API", en: "Python · Web Scraping · API" },
+      slides: [
+        { img: "webscraping.png", h: { fr: "Partie 1 — Web Scraping", en: "Part 1 — Web Scraping" }, p: { fr: "Première partie du projet : choisir librement un site à scraper, analyser les données et en tirer des indicateurs pertinents. Récupération de données géographiques, scraping vers un DataFrame (Pandas), puis création d'un tableau de bord avec carte et graphiques.", en: "First part: freely choose a website to scrape, analyse the data and derive relevant indicators. Geographic data collection, scraping into a Pandas DataFrame, then a dashboard with a map and charts." } },
+        { img: "webscraping.png", h: { fr: "Partie 2 — API Météo (Synop)", en: "Part 2 — Weather API (Synop)" }, p: { fr: "Seconde partie, en équipe : exploitation de l'API « Données SYNOP essentielles » pour produire des indicateurs visuels — carte Folium interactive des températures moyennes par commune, graphiques comparatifs par région et par année (pluviométrie, pression, humidité…), et analyse des observations à moins de 100 km de Poitiers.", en: "Second part, as a team: using the « Essential SYNOP data » API to produce visual indicators — an interactive Folium map of average temperatures per town, comparative charts by region and year (rainfall, pressure, humidity…), and analysis of observations within 100 km of Poitiers." } }
+      ]
+    },
+    {
+      id: 22, sem: "s3", dir: IMG2, cover: "cuivre-accueil.png", file: FILE2 + "cuivre-rapport.pdf",
+      title: { fr: "La folle course de l'or rouge — prévisions du cuivre", en: "The wild ride of red gold — copper forecasting" },
+      tag: { fr: "Statistiques · Séries temporelles", en: "Statistics · Time series" },
+      slides: [
+        { img: "cuivre-accueil.png", h: { fr: "Contexte et objectifs", en: "Context and objectives" }, p: { fr: "Dans un contexte d'instabilité économique, le cuivre — baromètre de l'activité industrielle mondiale — connaît une volatilité record. Ce rapport (réalisé avec Mathieu Lopes Moreira) propose une analyse statistique rigoureuse en trois phases : analyse descriptive, modélisation de la tendance, et prévision des prix pour 2026.", en: "Amid economic instability, copper — a barometer of global industrial activity — shows record volatility. This report (made with Mathieu Lopes Moreira) offers a rigorous statistical analysis in three phases: descriptive analysis, trend modelling, and a 2026 price forecast." } },
+        { img: "cuivre-fin.png", h: { fr: "Analyse, modélisation et prévision", en: "Analysis, modelling and forecast" }, p: { fr: "Étude des prix mensuels (en $/tonne, données FMI de 2011 à 2025) : un marché nerveux marqué par le ralentissement chinois, le choc du COVID et un record autour de 10 500 $. La saisonnalité est faible (le risque varie surtout d'avril à juin). Un modèle quadratique (R² ≈ 64 %) isole la tendance de fond et confirme une forte accélération haussière, base de la prévision 2026.", en: "Monthly prices ($/tonne, IMF data 2011-2025): a nervous market shaped by China's slowdown, the COVID shock and a record around $10,500. Seasonality is weak (risk peaks from April to June). A quadratic model (R² ≈ 64%) isolates the underlying trend and confirms a strong bullish acceleration — the basis for the 2026 forecast." } }
+      ]
+    },
+    {
+      id: 23, sem: "s3", dir: IMG2, cover: "vba.png", file: FILE2 + "recensement-vba.zip",
+      title: { fr: "Classeur interactif de recensement des étudiants", en: "Interactive student-registration workbook" },
+      tag: { fr: "Excel/VBA · Google Apps Script", en: "Excel/VBA · Google Apps Script" },
+      slides: [
+        { img: "vba.png", h: { fr: "Contexte et objectifs", en: "Context and objectives" }, p: { fr: "Outil de gestion (en binôme avec Ely Mouthon) pour recenser les étudiants intéressés par le BUT SD lors d'événements d'orientation — salons, journées portes ouvertes, immersions. Deux versions ont été développées : une sous Excel/VBA et une sous Google Sheets / Apps Script.", en: "A management tool (paired with Ely Mouthon) to register students interested in the Data Science degree at orientation events — fairs, open days, immersions. Two versions were built: one in Excel/VBA and one in Google Sheets / Apps Script." } },
+        { img: "vba.png", h: { fr: "Fonctionnalités et démarche", en: "Features and approach" }, p: { fr: "Formulaire de saisie (ajout/modification), menu de navigation, tableau de bord dynamique, carte choroplèthe et liens hypertexte pour rouvrir une fiche. La version Google reprend l'essentiel (saisie, base de données, graphiques) malgré quelques limites sur l'interactivité avancée. L'IA a servi d'assistance au codage (blocs tagués) et deux vidéos de démonstration ont été livrées.", en: "Entry form (add/edit), navigation menu, dynamic dashboard, choropleth map and hyperlinks to reopen a record. The Google version reproduces the essentials (entry, database, charts) despite some limits on advanced interactivity. AI was used as a coding aid (tagged blocks) and two demo videos were delivered." } }
+      ]
+    },
+    {
+      id: 24, sem: "s4", dir: IMG2, cover: "duoville.jpg", file: FILE2 + "duoville-streamlit.zip",
+      title: { fr: "DuoVille — comparateur de villes (Streamlit)", en: "DuoVille — city comparator (Streamlit)" },
+      tag: { fr: "Streamlit · Python · APIs", en: "Streamlit · Python · APIs" },
+      slides: [
+        { img: "duoville.jpg", h: { fr: "Une application web multipage", en: "A multi-page web app" }, p: { fr: "Interface web développée avec Streamlit : un tableau de bord à plusieurs pages pour sélectionner et comparer deux villes françaises de plus de 20 000 habitants. Les données sont collectées et traitées via des fichiers et des APIs (INSEE, Pôle Emploi, Open Data).", en: "A web interface built with Streamlit: a multi-page dashboard to select and compare two French cities of more than 20,000 inhabitants. Data is collected and processed from files and APIs (INSEE, Pôle Emploi, Open Data)." } },
+        { img: "duoville.jpg", h: { fr: "Cartographie et indicateurs", en: "Mapping and indicators" }, p: { fr: "Cartographie et analyse d'indicateurs multiples — emploi, logement, météo… — pour comparer les territoires et faciliter la prise de décision.", en: "Mapping and analysis of multiple indicators — employment, housing, weather… — to compare areas and support decision-making." } }
+      ]
+    },
+    {
+      id: 25, sem: "s4", dir: IMG2, cover: "qgis.jpg", file: FILE2 + "qgis.pdf",
+      title: { fr: "Étude stratégique d'implantation (SIG / QGIS)", en: "Strategic location study (GIS / QGIS)" },
+      tag: { fr: "QGIS · SIG · Géomatique", en: "QGIS · GIS · Geomatics" },
+      slides: [
+        { img: "qgis.jpg", h: { fr: "Diagnostic spatial via un SIG", en: "Spatial diagnosis via GIS" }, p: { fr: "Étude réalisée sous QGIS (avec Ely Mouthon) : dresser un diagnostic spatial des structures existantes pour orienter de futurs franchisés vers les zones à fort potentiel. Analyse de la densité et de la saturation (points de vente pour 100 000 habitants), de l'accessibilité (proximité des réseaux SNCF/IDFM) et des zones de chalandise (rayon de 15 km, focus ex-Poitou-Charentes).", en: "A QGIS study (with Ely Mouthon): a spatial diagnosis of existing outlets to steer future franchisees toward high-potential areas. Analysis of density and saturation (outlets per 100,000 inhabitants), accessibility (proximity to SNCF/IDFM networks) and catchment areas (15 km radius, focus on the former Poitou-Charentes region)." } },
+        { img: "qgis.jpg", h: { fr: "Cartographie d'aide à la décision", en: "Decision-support mapping" }, p: { fr: "Le SIG croise des données statistiques (population, dates d'ouverture) et les spatialise pour produire des cartes d'aide à la décision (par exemple le top 15 des villes), bien plus parlantes que de simples tableaux de chiffres.", en: "The GIS cross-references statistical data (population, opening dates) and spatialises it to produce decision-support maps (e.g. the top 15 cities), far more telling than plain tables of figures." } }
+      ]
+    }
+  ];
+
+  const ALL_PROJECTS = PROJECTS.concat(PROJECTS_SD2);
+  const dirOf = (p) => p.dir || IMG1;
+  const semLabel = (sem) => (lang() === "fr" ? "Semestre " : "Semester ") + sem.replace("s", "");
+
+  /* ---------- BUILD PROJECT GRIDS ---------- */
+  function renderGrid(arr, gridEl) {
+    if (!gridEl) return;
+    gridEl.innerHTML = arr.map((p) => `
+      <article class="project-card" data-sem="${p.sem}" data-id="${p.id}">
+        <img src="${dirOf(p)}${p.cover}" alt="" loading="lazy">
+        <span class="project-card__plus">+</span>
+        <div class="project-card__overlay">
+          <span class="project-card__sem">${semLabel(p.sem)}</span>
+          <span class="project-card__title">${t(p.title)}</span>
+        </div>
+      </article>`).join("");
+  }
+  renderGrid(PROJECTS, $("#projectGrid"));
+  renderGrid(PROJECTS_SD2, $("#projectGridSD2"));
 
   function refreshGridLang() {
     $$(".project-card").forEach((card) => {
-      const p = PROJECTS.find((x) => x.id == card.dataset.id);
+      const p = ALL_PROJECTS.find((x) => x.id == card.dataset.id);
+      if (!p) return;
       card.querySelector(".project-card__title").textContent = t(p.title);
-      card.querySelector(".project-card__sem").textContent =
-        p.sem === "s1" ? (lang() === "fr" ? "Semestre 1" : "Semester 1") : (lang() === "fr" ? "Semestre 2" : "Semester 2");
+      card.querySelector(".project-card__sem").textContent = semLabel(p.sem);
     });
   }
 
@@ -243,24 +303,27 @@
     })
   );
 
-  /* ---------- FILTERS ---------- */
-  $$(".chip").forEach((chip) =>
-    chip.addEventListener("click", () => {
-      $$(".chip").forEach((c) => c.classList.remove("is-active"));
-      chip.classList.add("is-active");
-      const f = chip.dataset.filter;
-      $$(".project-card").forEach((card) =>
-        card.classList.toggle("hide", f !== "all" && card.dataset.sem !== f)
-      );
-    })
-  );
+  /* ---------- FILTERS (scoped to each year panel) ---------- */
+  $$(".filter-row").forEach((row) => {
+    const panel = row.closest(".year-panel");
+    row.querySelectorAll(".chip").forEach((chip) =>
+      chip.addEventListener("click", () => {
+        row.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        const f = chip.dataset.filter;
+        (panel || document).querySelectorAll(".project-card").forEach((card) =>
+          card.classList.toggle("hide", f !== "all" && card.dataset.sem !== f)
+        );
+      })
+    );
+  });
 
   /* ---------- PROJECT MODAL ---------- */
   const modal = $("#projectModal");
   const modalState = { open: false, project: null, index: 0 };
 
   function openModal(id) {
-    modalState.project = PROJECTS.find((p) => p.id == id);
+    modalState.project = ALL_PROJECTS.find((p) => p.id == id);
     modalState.index = 0;
     modalState.open = true;
     modal.classList.add("open");
@@ -279,7 +342,7 @@
     $("#modalDownload").href = p.file;
     $("#modalSlides").innerHTML = p.slides.map((s, i) => `
       <div class="modal__slide ${i === modalState.index ? "active" : ""}">
-        <a href="${p.file}" download><img src="${IMG1}${s.img}" alt=""></a>
+        <a href="${p.file}" download><img src="${dirOf(p)}${s.img}" alt=""></a>
         <div><h4>${t(s.h)}</h4><p>${t(s.p)}</p></div>
       </div>`).join("");
     $("#modalDots").innerHTML = p.slides.map((_, i) =>
@@ -288,7 +351,7 @@
     $("#modalNext").disabled = modalState.index === p.slides.length - 1;
     $$("#modalDots span").forEach((d) => d.addEventListener("click", () => { modalState.index = +d.dataset.i; renderSlides(); }));
   }
-  grid.addEventListener("click", (e) => {
+  document.addEventListener("click", (e) => {
     const card = e.target.closest(".project-card");
     if (card) openModal(card.dataset.id);
   });
@@ -349,8 +412,17 @@ PROJETS DE 1ʳᵉ ANNÉE (BUT SD 1) :
 8. Analyse de données & dataviz — outil CustomTkinter d'analyse des accidents de la vie courante pour Calyxis ; Octave a conçu toute l'interface graphique (responsive, multilingue) et intégré les scripts Python de l'équipe. C'est son projet le plus abouti.
 9. Estimation par échantillonnage — estimation de la population de Nouvelle-Aquitaine (aléatoire simple vs stratifié) + analyse du sport chez les étudiants (khi-deux, V de Cramér).
 
-PROJETS 2ᵉ ANNÉE : en cours, publiés bientôt sur le portfolio. PROJETS 3ᵉ ANNÉE : prochainement.
-BILAN : le bilan de 1ʳᵉ année est disponible et téléchargeable sur le portfolio ; ceux de 2ᵉ et 3ᵉ année viendront plus tard.`;
+PROJETS DE 2ᵉ ANNÉE (BUT SD 2) :
+- Semestre 3 :
+  10. Outil décisionnel Web Scraping & API Météo — scraping d'un site (données géographiques vers DataFrame, tableau de bord carte+graphiques) puis exploitation de l'API « Données SYNOP essentielles » (carte Folium des températures par commune, graphiques par région/année, observations à moins de 100 km de Poitiers). Projet d'équipe.
+  11. « La folle course de l'or rouge » — prévisions du cours du cuivre 2026 (avec Mathieu Lopes Moreira) : analyse statistique de séries temporelles (données FMI 2011-2025), modèle quadratique (R²≈64 %) et prévision.
+  12. Classeur interactif de recensement des étudiants (avec Ely Mouthon) — outil Excel/VBA + version Google Sheets/Apps Script pour recenser les étudiants lors d'événements d'orientation (formulaire, tableau de bord, carte choroplèthe).
+- Semestre 4 :
+  13. DuoVille — application web Streamlit pour comparer deux villes françaises de +20 000 habitants (APIs INSEE, Pôle Emploi, Open Data ; cartographie ; emploi, logement, météo).
+  14. Étude stratégique d'implantation sous QGIS (SIG, avec Ely Mouthon) — densité/saturation, accessibilité aux transports, zones de chalandise, cartes d'aide à la décision.
+
+PROJETS 3ᵉ ANNÉE : prochainement.
+BILAN & RAPPORTS : les bilans de 1ʳᵉ et 2ᵉ année sont disponibles/téléchargeables sur le portfolio (3ᵉ année à venir). Le rapport d'alternance 2025-2026 est aussi téléchargeable (celui de 2027 viendra plus tard).`;
 
   function togglePanel(open) {
     panel.classList.toggle("open", open);

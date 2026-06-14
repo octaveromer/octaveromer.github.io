@@ -275,6 +275,8 @@ body[data-lang="en"] .lang-toggle__en { color:var(--o-1); }
 .report-card:hover { transform:translateY(-4px); box-shadow:0 24px 50px -30px rgba(255,94,58,.4); }
 .report-card__year { font-family:var(--font-display); font-weight:600; font-size:1.25rem; }
 .report-card .coming__badge { margin:0; }
+.report-card--ready { border-style:solid; border-color:var(--o-2); text-decoration:none; }
+.report-card--ready:hover { border-color:var(--o-1); }
 
 /* ============ YEAR TABS ============ */
 .year-tabs { display:inline-flex; gap:.4rem; padding:.4rem; background:var(--bg-soft);
