@@ -185,7 +185,7 @@
     const track = $("#isliderTrack");
     const slides = $$(".islide", track);
     const dotsWrap = $("#isliderDots");
-    let idx = 0, auto = null;
+    let idx = 0, auto = null, stopped = false;
 
     dotsWrap.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Centre d'intérêt ${i + 1}"></button>`).join("");
     const dots = $$("button", dotsWrap);
@@ -207,7 +207,10 @@
     // bouton "en savoir plus" de chaque slide
     slides.forEach((s) => {
       const btn = $(".islide__toggle", s);
-      if (btn) btn.addEventListener("click", () => s.classList.toggle("is-open"));
+      if (btn) btn.addEventListener("click", () => {
+        s.classList.toggle("is-open");
+        stopped = true; clearInterval(auto); // stoppe le défilement auto pour lire tranquille
+      });
     });
 
     // swipe tactile
@@ -221,8 +224,8 @@
     });
 
     // défilement automatique (en pause au survol)
-    const start = () => { auto = setInterval(() => next(false), 6500); };
-    const restart = () => { clearInterval(auto); start(); };
+    const start = () => { if (stopped) return; clearInterval(auto); auto = setInterval(() => next(false), 6500); };
+    const restart = () => { start(); };
     slider.addEventListener("mouseenter", () => clearInterval(auto));
     slider.addEventListener("mouseleave", start);
 
