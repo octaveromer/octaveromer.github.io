@@ -178,6 +178,58 @@
       open ? (lang() === "fr" ? "Réduire" : "Show less") : (lang() === "fr" ? "En savoir plus" : "Read more");
   });
 
+  /* ---------- INTERESTS SLIDER ---------- */
+  (function initSlider() {
+    const slider = $("#islider");
+    if (!slider) return;
+    const track = $("#isliderTrack");
+    const slides = $$(".islide", track);
+    const dotsWrap = $("#isliderDots");
+    let idx = 0, auto = null;
+
+    dotsWrap.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Centre d'intérêt ${i + 1}"></button>`).join("");
+    const dots = $$("button", dotsWrap);
+
+    function go(i, fromUser) {
+      idx = (i + slides.length) % slides.length;
+      track.style.transform = "translateX(-" + idx * 100 + "%)";
+      dots.forEach((d, k) => d.classList.toggle("on", k === idx));
+      slides.forEach((s) => s.classList.remove("is-open")); // referme les "en savoir plus"
+      if (fromUser) restart();
+    }
+    const next = (u) => go(idx + 1, u);
+    const prev = (u) => go(idx - 1, u);
+
+    $("#isliderNext").addEventListener("click", () => next(true));
+    $("#isliderPrev").addEventListener("click", () => prev(true));
+    dots.forEach((d, i) => d.addEventListener("click", () => go(i, true)));
+
+    // bouton "en savoir plus" de chaque slide
+    slides.forEach((s) => {
+      const btn = $(".islide__toggle", s);
+      if (btn) btn.addEventListener("click", () => s.classList.toggle("is-open"));
+    });
+
+    // swipe tactile
+    let x0 = null;
+    track.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) (dx < 0 ? next(true) : prev(true));
+      x0 = null;
+    });
+
+    // défilement automatique (en pause au survol)
+    const start = () => { auto = setInterval(() => next(false), 6500); };
+    const restart = () => { clearInterval(auto); start(); };
+    slider.addEventListener("mouseenter", () => clearInterval(auto));
+    slider.addEventListener("mouseleave", start);
+
+    go(0);
+    start();
+  })();
+
   /* ---------- TILT cards + magnetic + cursor ---------- */
   const fine = window.matchMedia("(hover:hover)").matches;
   if (fine) {

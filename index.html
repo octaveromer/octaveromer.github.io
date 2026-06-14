@@ -111,54 +111,97 @@
       <h2 class="section__title reveal"><span data-fr="À propos de moi" data-en="About me">À propos de moi</span></h2>
     </div>
 
-    <div class="about__grid">
-      <div class="about__bio reveal">
-        <p class="about__intro"
-           data-fr="Je m'appelle Octave Romer, j'ai 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort. Positif, curieux et rigoureux, j'ai découvert la programmation et la data — et je ne les ai plus lâchées."
-           data-en="My name is Octave Romer, I'm 19 and a Data Science student at the IUT of Poitiers-Niort-Châtellerault, Niort campus. Positive, curious and rigorous, I discovered programming and data — and never looked back.">
-          Je m'appelle Octave Romer, j'ai 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort. Positif, curieux et rigoureux, j'ai découvert la programmation et la data — et je ne les ai plus lâchées.
+    <div class="about__bio reveal">
+      <p class="about__intro"
+         data-fr="Je m'appelle Octave Romer, j'ai 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort. Positif, curieux et rigoureux, j'ai découvert la programmation et la data — et je ne les ai plus lâchées."
+         data-en="My name is Octave Romer, I'm 19 and a Data Science student at the IUT of Poitiers-Niort-Châtellerault, Niort campus. Positive, curious and rigorous, I discovered programming and data — and never looked back.">
+        Je m'appelle Octave Romer, j'ai 19 ans et je suis étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault, campus de Niort. Positif, curieux et rigoureux, j'ai découvert la programmation et la data — et je ne les ai plus lâchées.
+      </p>
+
+      <div class="about__more" id="aboutMore" hidden>
+        <p data-fr="En terminale au lycée à Niort, j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l'option maths expertes. Après le bac, j'ai intégré le BUT Science des Données, une formation scientifique qui correspondait parfaitement à mes intérêts."
+           data-en="In high school in Niort, I specialised in mathematics and physics-chemistry, plus advanced maths. After the baccalaureate I joined the Data Science degree, a scientific program perfectly aligned with my interests.">
+          En terminale au lycée à Niort, j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l'option maths expertes. Après le bac, j'ai intégré le BUT Science des Données, une formation scientifique qui correspondait parfaitement à mes intérêts.
         </p>
+        <p data-fr="Je me suis spécialisé en visualisation et conception d'outils décisionnels. Par la suite, j'aimerais beaucoup voyager et réussir à devenir indépendant."
+           data-en="I specialised in visualisation and the design of decision-making tools. Later on, I'd love to travel a lot and become independent.">
+          Je me suis spécialisé en visualisation et conception d'outils décisionnels. Par la suite, j'aimerais beaucoup voyager et réussir à devenir indépendant.
+        </p>
+      </div>
 
-        <div class="about__more" id="aboutMore" hidden>
-          <p data-fr="En terminale au lycée à Niort, j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l'option maths expertes. Après le bac, j'ai intégré le BUT Science des Données, une formation scientifique qui correspondait parfaitement à mes intérêts."
-             data-en="In high school in Niort, I specialised in mathematics and physics-chemistry, plus advanced maths. After the baccalaureate I joined the Data Science degree, a scientific program perfectly aligned with my interests.">
-            En terminale au lycée à Niort, j'avais comme spécialités les mathématiques et la physique-chimie, ainsi que l'option maths expertes. Après le bac, j'ai intégré le BUT Science des Données, une formation scientifique qui correspondait parfaitement à mes intérêts.
-          </p>
-          <p data-fr="Je me suis spécialisé en visualisation et conception d'outils décisionnels. Par la suite, j'aimerais beaucoup voyager et réussir à devenir indépendant."
-             data-en="I specialised in visualisation and the design of decision-making tools. Later on, I'd love to travel a lot and become independent.">
-            Je me suis spécialisé en visualisation et conception d'outils décisionnels. Par la suite, j'aimerais beaucoup voyager et réussir à devenir indépendant.
-          </p>
+      <button class="link-more" id="aboutToggle"><span data-fr="En savoir plus" data-en="Read more">En savoir plus</span> <i>↓</i></button>
+    </div>
+
+    <!-- ===== Interests slider ===== -->
+    <div class="islider reveal" id="islider">
+      <div class="islider__viewport">
+        <div class="islider__track" id="isliderTrack">
+
+          <article class="islide">
+            <div class="islide__inner">
+              <div class="islide__img"><img src="assets/img/about/course.jpg" alt="Octave, coureur"></div>
+              <div class="islide__body">
+                <span class="islide__tag">01 · <span data-fr="Course à pied" data-en="Running">Course à pied</span></span>
+                <h3 data-fr="Coureur" data-en="Runner">Coureur</h3>
+                <p class="islide__lead" data-fr="La course à pied, c'est ma discipline du dépassement et de la régularité." data-en="Running is my discipline of pushing limits and staying consistent.">La course à pied, c'est ma discipline du dépassement et de la régularité.</p>
+                <div class="islide__more">
+                  <p data-fr="J'ai bouclé le marathon de La Rochelle en novembre 2025 en 3h28. Au-delà du chrono, courir m'apprend la gestion de l'effort sur la durée, la patience et la discipline — des qualités que je retrouve directement dans mon travail sur la donnée. Je m'entraîne plusieurs fois par semaine, entre fractionné et sorties longues."
+                     data-en="I completed the La Rochelle marathon in November 2025 in 3h28. Beyond the time, running teaches me to manage effort over the long run, patience and discipline — qualities I bring straight into my data work. I train several times a week, mixing intervals and long runs.">J'ai bouclé le marathon de La Rochelle en novembre 2025 en 3h28. Au-delà du chrono, courir m'apprend la gestion de l'effort sur la durée, la patience et la discipline — des qualités que je retrouve directement dans mon travail sur la donnée. Je m'entraîne plusieurs fois par semaine, entre fractionné et sorties longues.</p>
+                </div>
+                <button class="islide__toggle">
+                  <span class="lbl-more" data-fr="En savoir plus" data-en="Read more">En savoir plus</span>
+                  <span class="lbl-less" data-fr="Réduire" data-en="Show less">Réduire</span>
+                  <i>↓</i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="islide">
+            <div class="islide__inner">
+              <div class="islide__img"><img src="assets/img/about/hand.jpeg" alt="Octave, handball"></div>
+              <div class="islide__body">
+                <span class="islide__tag">02 · <span data-fr="Handball" data-en="Handball">Handball</span></span>
+                <h3 data-fr="Passionné de handball" data-en="Handball enthusiast">Passionné de handball</h3>
+                <p class="islide__lead" data-fr="12 ans de handball au club de Niort, aujourd'hui en National 3." data-en="12 years of handball at the Niort club, now in National 3.">12 ans de handball au club de Niort, aujourd'hui en National 3.</p>
+                <div class="islide__more">
+                  <p data-fr="Je joue aux postes de demi-centre et d'ailier. Le handball m'a tout appris du collectif : lire le jeu, anticiper, décider vite et faire confiance à ses coéquipiers. Entre les entraînements de la semaine et les matchs du week-end, c'est un équilibre essentiel à côté des études."
+                     data-en="I play as centre back and winger. Handball taught me everything about teamwork: reading the game, anticipating, deciding fast and trusting teammates. Between weekly training and weekend games, it's an essential balance alongside my studies.">Je joue aux postes de demi-centre et d'ailier. Le handball m'a tout appris du collectif : lire le jeu, anticiper, décider vite et faire confiance à ses coéquipiers. Entre les entraînements de la semaine et les matchs du week-end, c'est un équilibre essentiel à côté des études.</p>
+                </div>
+                <button class="islide__toggle">
+                  <span class="lbl-more" data-fr="En savoir plus" data-en="Read more">En savoir plus</span>
+                  <span class="lbl-less" data-fr="Réduire" data-en="Show less">Réduire</span>
+                  <i>↓</i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="islide">
+            <div class="islide__inner">
+              <div class="islide__img"><img src="assets/img/about/work-alex-nowak.jpg" alt="Octave, voyages"></div>
+              <div class="islide__body">
+                <span class="islide__tag">03 · <span data-fr="Voyages" data-en="Travel">Voyages</span></span>
+                <h3 data-fr="Voyageur curieux" data-en="Curious traveller">Voyageur curieux</h3>
+                <p class="islide__lead" data-fr="Explorer de nouvelles cultures à chaque occasion." data-en="Exploring new cultures whenever I can.">Explorer de nouvelles cultures à chaque occasion.</p>
+                <div class="islide__more">
+                  <p data-fr="Mes derniers voyages m'ont mené à Malte, Marrakech, Londres et Los Angeles. Chaque destination est une façon d'ouvrir mon regard, de rencontrer des gens et de prendre du recul. Voyager fait partie de mes aspirations : découvrir le monde tout en construisant une vie professionnelle qui me laisse cette liberté."
+                     data-en="My latest trips took me to Malta, Marrakech, London and Los Angeles. Each destination broadens my perspective, lets me meet people and step back. Travelling is one of my aspirations: discovering the world while building a career that keeps that freedom.">Mes derniers voyages m'ont mené à Malte, Marrakech, Londres et Los Angeles. Chaque destination est une façon d'ouvrir mon regard, de rencontrer des gens et de prendre du recul. Voyager fait partie de mes aspirations : découvrir le monde tout en construisant une vie professionnelle qui me laisse cette liberté.</p>
+                </div>
+                <button class="islide__toggle">
+                  <span class="lbl-more" data-fr="En savoir plus" data-en="Read more">En savoir plus</span>
+                  <span class="lbl-less" data-fr="Réduire" data-en="Show less">Réduire</span>
+                  <i>↓</i>
+                </button>
+              </div>
+            </div>
+          </article>
+
         </div>
-
-        <button class="link-more" id="aboutToggle"><span data-fr="En savoir plus" data-en="Read more">En savoir plus</span> <i>↓</i></button>
       </div>
-
-      <div class="about__cards">
-        <article class="tilt-card reveal" data-delay="1">
-          <div class="tilt-card__img"><img src="assets/img/about/work-metiew-smith.jpg" alt=""></div>
-          <h3 data-fr="Passionné de handball" data-en="Handball enthusiast">Passionné de handball</h3>
-          <p data-fr="12 ans au club de Niort, en National 3 aux postes de demi-centre et ailier. Entre entraînement et plaisir du jeu."
-             data-en="12 years at the Niort club, playing in National 3 as centre back and winger. Between training and the joy of the game.">
-            12 ans au club de Niort, en National 3 aux postes de demi-centre et ailier. Entre entraînement et plaisir du jeu.
-          </p>
-        </article>
-        <article class="tilt-card reveal" data-delay="2">
-          <div class="tilt-card__img"><img src="assets/img/about/work-victory.jpg" alt=""></div>
-          <h3 data-fr="Coureur" data-en="Runner">Coureur</h3>
-          <p data-fr="J'ai couru le marathon de La Rochelle en novembre 2025 en 3h28 — un défi d'endurance et de régularité que j'adore relever."
-             data-en="I ran the La Rochelle marathon in November 2025 in 3h28 — an endurance and consistency challenge I love taking on.">
-            J'ai couru le marathon de La Rochelle en novembre 2025 en 3h28 — un défi d'endurance et de régularité que j'adore relever.
-          </p>
-        </article>
-        <article class="tilt-card reveal" data-delay="3">
-          <div class="tilt-card__img"><img src="assets/img/about/work-alex-nowak.jpg" alt=""></div>
-          <h3 data-fr="Voyageur curieux" data-en="Curious traveller">Voyageur curieux</h3>
-          <p data-fr="J'aime énormément voyager. Mes derniers voyages : Malte, Marrakech, Londres et Los Angeles — autant de cultures et de découvertes."
-             data-en="I love to travel. My latest trips: Malta, Marrakech, London and Los Angeles — so many cultures and discoveries.">
-            J'aime énormément voyager. Mes derniers voyages : Malte, Marrakech, Londres et Los Angeles — autant de cultures et de découvertes.
-          </p>
-        </article>
-      </div>
+      <button class="islider__nav islider__nav--prev" id="isliderPrev" aria-label="Précédent">‹</button>
+      <button class="islider__nav islider__nav--next" id="isliderNext" aria-label="Suivant">›</button>
+      <div class="islider__dots" id="isliderDots"></div>
     </div>
 
     <div class="career">
