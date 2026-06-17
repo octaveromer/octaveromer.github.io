@@ -445,7 +445,7 @@ RÈGLES :
 - N'invente jamais d'information qui n'est pas ci-dessous. Si tu ne sais pas, propose de contacter Octave par mail.
 
 QUI EST OCTAVE :
-- Octave Romer, 19 ans, étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault (campus de Niort, 79000).
+- Octave Romer, 20 ans, étudiant en BUT Science des Données à l'IUT de Poitiers-Niort-Châtellerault (campus de Niort, 79000).
 - Actuellement en 2ᵉ année (BUT SD 2). Spécialisation : visualisation et conception d'outils décisionnels.
 - Alternant data analyst chez Groupama Centre Atlantique depuis août 2025 (jusqu'en août 2027), au sein du service Administration des Ventes, qui produit les reportings réguliers à destination des directions ; il participe à leur production, automatisation et modernisation. Ses rapports d'alternance (un par année : 2026 et 2027) seront publiés prochainement sur le portfolio.
 - Aspirations : il aimerait beaucoup voyager et réussir à devenir indépendant.
